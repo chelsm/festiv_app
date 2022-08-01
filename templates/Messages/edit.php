@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Message $message
+ * @var string[]|\Cake\Collection\CollectionInterface $users
  */
 ?>
 <div class="row">
@@ -24,7 +25,7 @@
                 <?php
                     echo $this->Form->control('content');
                     echo $this->Form->control('receiver_id');
-                    echo $this->Form->control('sender_id');
+                    echo $this->Form->control('sender_id', ['options' => $users]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

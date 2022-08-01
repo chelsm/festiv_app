@@ -27,6 +27,7 @@
                     echo $this->Form->control('lastname');
                     echo $this->Form->control('description');
                     echo $this->Form->control('email');
+                    echo $this->Form->control('password');
 
                 ?>
             </fieldset>

@@ -26,7 +26,7 @@
                     <td><?= h($message->created) ?></td>
                     <td><?= h($message->modified) ?></td>
                     <td><?= $this->Number->format($message->receiver_id) ?></td>
-                    <td><?= $this->Number->format($message->sender_id) ?></td>
+                    <td><?= $message->has('user') ? $this->Html->link($message->user->id, ['controller' => 'Users', 'action' => 'view', $message->user->id]) : '' ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $message->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $message->id]) ?>

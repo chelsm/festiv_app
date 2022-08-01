@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Message $message
+ * @var \Cake\Collection\CollectionInterface|string[] $users
  */
 ?>
 <div class="row">
@@ -18,8 +19,7 @@
                 <legend><?= __('Add Message') ?></legend>
                 <?php
                     echo $this->Form->control('content');
-                    echo $this->Form->control('receiver_id');
-                    echo $this->Form->control('sender_id');
+                    echo $this->Form->control('receiver_id', ['options' => $userList]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

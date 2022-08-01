@@ -15,8 +15,7 @@ use Cake\ORM\Entity;
  * @property int $receiver_id
  * @property int $sender_id
  *
- * @property \App\Model\Entity\Receiver $receiver
- * @property \App\Model\Entity\Sender $sender
+ * @property \App\Model\Entity\User $user
  */
 class Message extends Entity
 {
@@ -35,7 +34,6 @@ class Message extends Entity
         'content' => true,
         'receiver_id' => true,
         'sender_id' => true,
-        'receiver' => true,
-        'sender' => true,
+        'user' => true,
     ];
 }

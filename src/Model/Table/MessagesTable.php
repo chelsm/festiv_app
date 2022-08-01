@@ -11,9 +11,6 @@ use Cake\Validation\Validator;
 /**
  * Messages Model
  *
- * @property \App\Model\Table\ReceiversTable&\Cake\ORM\Association\BelongsTo $Receivers
- * @property \App\Model\Table\SendersTable&\Cake\ORM\Association\BelongsTo $Senders
- *
  * @method \App\Model\Entity\Message newEmptyEntity()
  * @method \App\Model\Entity\Message newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Message[] newEntities(array $data, array $options = [])
@@ -48,13 +45,15 @@ class MessagesTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Users', [
+        $this->belongsTo('Receivers', [
+            'className' => 'Users',
             'foreignKey' => 'receiver_id',
-            'joinType' => 'INNER',
+            // 'joinType' => 'INNER',
         ]);
-        $this->belongsTo('Users', [
+        $this->belongsTo('Senders', [
+            'className' => 'Users',
             'foreignKey' => 'sender_id',
-            'joinType' => 'INNER',
+            // 'joinType' => 'INNER',
         ]);
     }
 
@@ -68,17 +67,17 @@ class MessagesTable extends Table
     {
         $validator
             ->scalar('content')
-            ->requirePresence('content', 'create')
+            ->requirePresence('content')
             ->notEmptyString('content');
 
         $validator
             ->integer('receiver_id')
-            ->requirePresence('receiver_id', 'create')
+            // ->requirePresence('receiver_id')
             ->notEmptyString('receiver_id');
 
         $validator
             ->integer('sender_id')
-            ->requirePresence('sender_id', 'create')
+            // ->requirePresence('sender_id')
             ->notEmptyString('sender_id');
 
         return $validator;

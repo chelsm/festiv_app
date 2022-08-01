@@ -19,16 +19,16 @@
             <h3><?= h($message->id) ?></h3>
             <table>
                 <tr>
+                    <th><?= __('User') ?></th>
+                    <td><?= $message->has('user') ? $this->Html->link($message->user->id, ['controller' => 'Users', 'action' => 'view', $message->user->id]) : '' ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($message->id) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Receiver Id') ?></th>
                     <td><?= $this->Number->format($message->receiver_id) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Sender Id') ?></th>
-                    <td><?= $this->Number->format($message->sender_id) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Created') ?></th>

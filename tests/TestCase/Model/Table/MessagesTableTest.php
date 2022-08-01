@@ -25,8 +25,7 @@ class MessagesTableTest extends TestCase
      */
     protected $fixtures = [
         'app.Messages',
-        'app.Receivers',
-        'app.Senders',
+        'app.Users',
     ];
 
     /**

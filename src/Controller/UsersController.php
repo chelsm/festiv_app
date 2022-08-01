@@ -91,6 +91,25 @@ class UsersController extends AppController
     }
 
     /**
+     * Conversation method
+     *
+     * @param string|null $id User id.
+     * @return \Cake\Http\Response|null|void Renders view
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function conversation($id = null)
+    {
+        $user = $this->Users->get($id, [
+            'contain' => [],
+        ]);
+        $id_user = $this->request->getAttribute('identity')->id;
+        // $message = $this->Users->Messages->find();
+
+        $this->set(compact('id_user'));
+    }
+
+
+    /**
      * Edit method
      *
      * @param string|null $id User id.
