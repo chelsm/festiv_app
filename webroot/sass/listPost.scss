@@ -1,0 +1,55 @@
+.posts{
+    padding: 15px;
+    .posts-container{
+
+        .posts-list{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
+            .post{
+                background: #FFFFFF;
+                border-radius: 24px;
+                display: inline-block;
+                height: auto;
+                width: 345px;
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                .post_picture{
+                    width: 100%;
+                    height: auto;
+                }
+                .post_info{
+                    padding: 15px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    .post_pseudo{
+                        a{
+                            font-family: "Futura LT Pro Bold";
+                            font-size: 16px;
+                            color: #393939;
+                            margin-top: 10px;
+                        }
+                    }
+                    .post_description{
+                        font-family: "Alef Regular";
+                        font-weight: 700;
+                        font-size: 14px;
+                        color: #393939;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                        text-align: left;
+                    }
+                }
+               
+            }
+        }
+    }
+}

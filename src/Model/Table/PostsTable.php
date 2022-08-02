@@ -80,7 +80,6 @@ class PostsTable extends Table
 
         $validator
             ->integer('user_id')
-            ->requirePresence('user_id', 'create')
             ->notEmptyString('user_id');
 
         return $validator;

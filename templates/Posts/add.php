@@ -14,12 +14,11 @@
     </aside>
     <div class="column-responsive column-80">
         <div class="posts form content">
-            <?= $this->Form->create($post) ?>
+            <?= $this->Form->create($post, ['enctype' => 'multipart/form-data'])  ?>
             <fieldset>
                 <legend><?= __('Add Post') ?></legend>
                 <?php
-                    echo $post;
-                    echo $this->Form->control('content');
+                    echo $this->Form->control('content', ['label' => 'ajouter un image / video', 'type' => 'file']);
                     echo $this->Form->control('description');
                 ?>
             </fieldset>

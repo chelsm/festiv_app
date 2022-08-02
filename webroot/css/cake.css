@@ -76,7 +76,6 @@ figure img {
 
 .users_login {
   color: #fff;
-  border: solid red;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -154,9 +153,6 @@ figure img {
   color: #004A59;
 }
 
-.users_signup {
-  border: solid red;
-}
 .users_signup .column {
   height: 232px;
   background: rgba(255, 255, 255, 0.66);
@@ -238,6 +234,55 @@ figure img {
   color: #fff;
 }
 
+.posts {
+  padding: 15px;
+}
+.posts .posts-container .posts-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+.posts .posts-container .posts-list .post {
+  background: #FFFFFF;
+  border-radius: 24px;
+  display: inline-block;
+  height: auto;
+  width: 345px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.posts .posts-container .posts-list .post .post_picture {
+  width: 100%;
+  height: auto;
+}
+.posts .posts-container .posts-list .post .post_info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.posts .posts-container .posts-list .post .post_info .post_pseudo a {
+  font-family: "Futura LT Pro Bold";
+  font-size: 16px;
+  color: #393939;
+  margin-top: 10px;
+}
+.posts .posts-container .posts-list .post .post_info .post_description {
+  font-family: "Alef Regular";
+  font-weight: 700;
+  font-size: 14px;
+  color: #393939;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
 @font-face {
   font-family: "Futura LT Pro Bold";
   src: url("../font/FuturaLTPro-Bold.woff") format("woff");
@@ -251,7 +296,7 @@ figure img {
   src: url("../font/Alef-Regular.ttf") format("truetype");
 }
 .bg_initial {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .bg_connexion {

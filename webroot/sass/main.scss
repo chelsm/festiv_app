@@ -1,6 +1,7 @@
 @import 'reset';
 @import 'user';
 @import 'connection';
+@import 'listPost';
 
 @font-face {
     font-family: 'Futura LT Pro Bold';
@@ -16,7 +17,7 @@
 }
 
 .bg_initial{
-    height: 100vh;
+    min-height: 100vh;
 }
 .bg_connexion{
     height: 100vh;
