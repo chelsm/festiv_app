@@ -1,14 +1,34 @@
-<div class="users form">
-    <?= $this->Flash->render() ?>
-    <h3>Connexion</h3>
+<div class=" users_login users form">
+    <h1 class='title'>Festiv<br>app</h1>
+    <section  class=" users_login_section">
+
+    <span  class='info'>commence une nouvelle aventure festivale . </span>
     <?= $this->Form->create() ?>
     <fieldset>
-        <legend><?= __('Veuillez s\'il vous plaît entrer votre nom d\'utilisateur et votre mot de passe') ?></legend>
-        <?= $this->Form->control('pseudo', ['required' => true]) ?>
-        <?= $this->Form->control('password', ['required' => true]) ?>
+        <?= $this->Form->control('pseudo', [
+            'required' => true,
+            "placeholder"=>"pseudo",
+            "label"=>false,
+            ]) 
+        ?>
+        <?= $this->Form->control('password', [
+            'required' => true,
+            "placeholder"=>"password",
+            "label"=>false,
+            ]) 
+        ?>
     </fieldset>
-    <?= $this->Form->submit(__('Login')); ?>
+    <?= $this->Flash->render() ?>
+    <?= $this->Form->submit(__('Se connecter'),[
+        'class'=>'login-btn'
+        ]); 
+    ?>
+    <div class="goToSignup">
+        <span>pas encore membre ? </span>
+        <?= $this->Html->link("Ajouter un utilisateur", ['action' => 'add', ]) ?>
+    </div>
     <?= $this->Form->end() ?>
+    </section>
 
-    <?= $this->Html->link("Ajouter un utilisateur", ['action' => 'add']) ?>
+
 </div>

@@ -31,10 +31,6 @@
                     <td><?= $this->Number->format($post->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Description') ?></th>
-                    <td><?= $post->description === null ? '' : $this->Number->format($post->description) ?></td>
-                </tr>
-                <tr>
                     <th><?= __('Created') ?></th>
                     <td><?= h($post->created) ?></td>
                 </tr>
@@ -43,9 +39,16 @@
                     <td><?= h($post->modified) ?></td>
                 </tr>
             </table>
+            <div class="text">
+                <strong><?= __('Description') ?></strong>
+                <blockquote>
+                    <?= $this->Text->autoParagraph(h($post->description)); ?>
+                </blockquote>
+            </div>
             <div class="related">
                 <h4><?= __('Related Comments') ?></h4>
                 <?php if (!empty($post->comments)) : ?>
+                    
                 <div class="table-responsive">
                     <table>
                         <tr>

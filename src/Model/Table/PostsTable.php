@@ -71,12 +71,11 @@ class PostsTable extends Table
     {
         $validator
             ->scalar('content')
-            ->maxLength('content', 100)
-            ->requirePresence('content', 'create')
+            ->maxLength('content', 250)
             ->notEmptyString('content');
 
         $validator
-            ->integer('description')
+            ->scalar('description')
             ->allowEmptyString('description');
 
         $validator

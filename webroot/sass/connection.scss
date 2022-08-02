@@ -1,0 +1,169 @@
+.users_login{
+    color: #fff;
+    border: solid red;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .title{
+        font-size: 2.5rem;
+        font-family: "Futura LT Pro Bold";
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        height: 45%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .users_login_section{
+        display: flex;
+        flex-direction: column;
+        height: inherit;
+        justify-content: space-between;
+        .info{
+            font-size: 1.5rem;
+            font-family: 'Futura LT Pro Bold';
+            text-align: center;
+        }
+        form{
+            color: #004A59;
+            border-radius: 0px 64px 0px 0px;
+            background: rgba(255, 255, 255, 0.66);  
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            gap: 5vh;
+            input{
+                border: none;
+                border-bottom: solid #004A59;
+                border-radius: 0;
+                text-align: start;
+                padding: 0;
+                font-size: 18px;
+                font-family: 'Alef Regular';
+
+            }
+            #pseudo, #password{
+                color: #004A59;
+                font-family: 'Alef Bold';
+            }
+            input.login-btn{
+                border: none;
+                background: #004A59;
+                border-radius: 15px;
+                color: #fff;
+                font-family: "Futura LT Pro Bold";
+                font-size: 1.5rem;
+                margin: 0;
+                text-transform: inherit;
+                display: flex;
+                cursor: pointer;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                &:hover{
+                    background: #fff;
+                    color: #004A59;
+                }
+            }
+            .goToSignup{
+                span{
+                    font-family: 'Alef Regular';
+                    font-weight: 400;
+                }
+                a{
+                    font-family: 'Alef Regular';
+                    font-weight: 700;
+                    color: #004A59;
+                }
+            }
+        }
+    }
+}
+
+.users_signup{
+    border: solid red;
+    .column {
+        height: 232px;
+        background: rgba(255, 255, 255, 0.66);
+        border-radius: 0px 0px 0px 64px;
+        padding: 49px;
+        .side-nav{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 50px;
+            .arrow-left{
+                background: url('../img/app_design/icons/arrow_left.svg') no-repeat;
+                height: 22px;
+                width: 22px;
+                display: block;
+            }
+            .title{
+                color: #393939;
+                font-family: "Futura LT Pro Bold";
+                font-size: 31px;
+                
+            }
+        } 
+    }
+    .users_add_section{
+        form{
+            color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            gap: 5vh;
+            input{
+                color: #FFFFFF;
+                border: none;
+                border-bottom: solid #FFFFFF;
+                border-radius: 0;
+                text-align: start;
+                padding: 0;
+                &::placeholder {
+                    color: #FFFFFF;
+                    font-family: 'Alef Regular';
+                    font-size: 1.5em;
+                }
+            }
+            #firstname, #lastname, #pseudo, #password, #email, #password{
+                color: #FFFFFF;
+                font-size: 14px;
+                font-family: 'Alef Regular';
+            }
+            .signup-btn{
+                border: none;
+                background: #004A59;
+                border-radius: 15px;
+                color: #fff;
+                font-family: "Futura LT Pro Bold";
+                font-size: 1.5rem;
+                margin: 0;
+                text-transform: inherit;
+                display: flex;
+                cursor: pointer;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                &:hover{
+                    background: #fff;
+                    color: #004A59;
+                }
+            }
+        } 
+        .goToLogin{
+            text-align: center;
+            span{
+                font-family: 'Alef Regular';
+                font-weight: 400;
+                color: #fff;
+            }
+            a{
+                font-family: 'Alef Regular';
+                font-weight: 700;
+                color: #fff;
+            }
+        }
+    }
+}

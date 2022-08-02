@@ -33,15 +33,22 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
+    <?= $this->fetch('webfonts') ?>
     <?= $this->fetch('script') ?>
 </head>
-<body>
+<body 
+    <?= str_contains($_SERVER[ 'REQUEST_URI' ],'/users/login') || str_contains($_SERVER[ 'REQUEST_URI' ],'/users/add') || $_SERVER[ 'REQUEST_URI' ]=== '/'? 
+    'class = bg_connexion 
+    style = "background-image: url(../img/app_design/bg_home.webp)"' 
+    : 
+    'class = bg_initial 
+    style = "background: linear-gradient(168.13deg, rgba(0, 138, 166, 0.2) 25%, rgba(246, 162, 120, 0.2) 61.81%)"' ?>
+><!--
     <nav class="top-nav">
         <div class="top-nav-title">
             <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
         </div>
         <div class="top-nav-links">
-        <!-- <?= $this->Html->link('Accueil', ['action'=>'index']) ?> -->
             <?php if ($this->request->getAttribute('identity') == null) :?>
                 <?= $this->Html->link('Créer un compte', ['controller'=>'Users','action'=>'add']) ?>
                 <?= $this->Html->link('Se connecter', ['controller'=>'Users','action'=>'login']) ?>
@@ -52,6 +59,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <?php endif; ?>
         </div>
     </nav>
+     -->
     <main class="main">
         <div class="container">
             <?= $this->Flash->render() ?>

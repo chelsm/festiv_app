@@ -1,6 +1,32 @@
 @import 'reset';
 @import 'user';
+@import 'connection';
 
-body{
-    // border: solid red; 
+@font-face {
+    font-family: 'Futura LT Pro Bold';
+    src: url('../font/FuturaLTPro-Bold.woff') format('woff');
+}
+@font-face {
+    font-family: 'Alef Bold';
+    src: url('../font/Alef-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Alef Regular';
+    src: url('../font/Alef-Regular.ttf') format('truetype');
+}
+
+.bg_initial{
+    height: 100vh;
+}
+.bg_connexion{
+    height: 100vh;
+    background-size: cover;
+}
+
+.main{
+    height: 100%;
+    .container{
+        height: 100%;
+        padding: 0px;
+    }
 }

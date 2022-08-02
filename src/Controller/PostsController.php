@@ -52,23 +52,10 @@ class PostsController extends AppController
         $post = $this->Posts->newEmptyEntity();
 
         if ($this->request->is('post')) {
-
-            // if(empty($this->request->getData('image')->getClientFilename()) || !in_array($this->request->getData('image')->getClientMediaType(), ['image/png', 'image/jpg', 'image/jpeg', 'image/gif', 'image/mp4'])){
-			// 	//message d'erreur
-			// 	$this->Flash->error('Format pas compatible');
-
-			// }else{ //sinon
-                $post = $this->Posts->patchEntity($post, $this->request->getData());
-            //     $ext = pathinfo($this->request->getData('image')->getClientFilename(), PATHINFO_EXTENSION);
-
-			// 	//on cree le nouveau nom
-			// 	$name = 'user-'.$id.'-'.time().'.'.$ext;
-            // }
-
-            
+            $post->set(['user_id'=>$this->request->getAttribute('identity')->id]);
+            $post = $this->Posts->patchEntity($post, $this->request->getData());
             if ($this->Posts->save($post)) {
                 $this->Flash->success(__('The post has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The post could not be saved. Please, try again.'));

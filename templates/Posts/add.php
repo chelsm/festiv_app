@@ -18,9 +18,9 @@
             <fieldset>
                 <legend><?= __('Add Post') ?></legend>
                 <?php
+                    echo $post;
                     echo $this->Form->control('content');
                     echo $this->Form->control('description');
-                    // echo $this->Form->control('user_id', ['options' => $users]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

@@ -15,19 +15,20 @@
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
                     <th><?= $this->Paginator->sort('content') ?></th>
-                    <th><?= $this->Paginator->sort('description') ?></th>
                     <th><?= $this->Paginator->sort('user_id') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($posts as $post): ?>
+                    <?php echo $post; ?>
+                    <br>
+                    <br>
                 <tr>
                     <td><?= $this->Number->format($post->id) ?></td>
                     <td><?= h($post->created) ?></td>
                     <td><?= h($post->modified) ?></td>
                     <td><?= h($post->content) ?></td>
-                    <td><?= $post->description === null ? '' : $this->Number->format($post->description) ?></td>
                     <td><?= $post->has('user') ? $this->Html->link($post->user->id, ['controller' => 'Users', 'action' => 'view', $post->user->id]) : '' ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $post->id]) ?>
