@@ -18,13 +18,21 @@ class PostsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users'],
-        ];
+        // $this->paginate = [
+        //     'contain' => ['Users'],
+        // ];
         
-        $posts = $this->paginate($this->Posts);
+        // $posts = $this->paginate($this->Posts);
 
-        $this->set(compact('posts'));
+
+        $posts= $this->paginate(
+            $this->Posts
+            ->find()
+            ->contain(['Users', 'Comments', 'Likes'])
+            ->order(['Posts.created'=>'DESC'])
+        );
+        $this->set(['posts'=> $posts]);
+
     }
 
     /**

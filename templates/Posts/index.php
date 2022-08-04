@@ -16,8 +16,22 @@
                         </figure>
                         <div class="post_info">
                             <span class="post_pseudo"><?= $post->has('user') ? $this->Html->link($post->user->pseudo, ['controller' => 'Users', 'action' => 'view', $post->user->id]) : '' ?></span>
-                            <p class="post_description"><?= $post->description?></p>
+                            <div  class="post_info__action">
+                                <!-- <?= $post ?> -->
+                                <?php if ( $post->likes) :?>
+                                    <?php foreach ($post->likes as $like): ?>
+                                        <?php if ( $post->likes) :?>
+                                            <?= $this->Html->link(__('<i class="fa-solid fa-heart post-liked"></i>'), ['controller' => 'Likes','action' => 'delete',  $like->id],['class' => 'superclass', 'escape' => false])?>
+                                        <?php endif ?>
+                                    <?php endforeach; ?>
+                                <?php else :?>
+                                    <?= $this->Html->link(__('<i class="fa-regular fa-heart post-notLiked"></i>'), ['controller' => 'Likes','action' => 'add',  $post->id],['class' => 'superclass', 'escape' => false])?>
+                                <?php endif ?>
+                                <?= $this->Html->link(__('<i class="fa-solid fa-comment-dots"></i>'), ['controller' => 'Comments','action' => 'index', ],['class' => 'superclass', 'escape' => false])?>
+                            </div> 
                         </div>
+                        <p class="post_description"><?= $post->description?></p>
+
                     </article>
                 <?php endforeach; ?>
         </section>

@@ -245,6 +245,7 @@ figure img {
   align-items: center;
 }
 .posts .posts-container .posts-list .post {
+  color: red;
   background: #FFFFFF;
   border-radius: 24px;
   display: inline-block;
@@ -264,8 +265,10 @@ figure img {
 .posts .posts-container .posts-list .post .post_info {
   padding: 15px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
 }
 .posts .posts-container .posts-list .post .post_info .post_pseudo a {
   font-family: "Futura LT Pro Bold";
@@ -273,7 +276,18 @@ figure img {
   color: #393939;
   margin-top: 10px;
 }
-.posts .posts-container .posts-list .post .post_info .post_description {
+.posts .posts-container .posts-list .post .post_info .post_info__action {
+  display: flex;
+  gap: 15px;
+}
+.posts .posts-container .posts-list .post .post_info .post_info__action .post-liked, .posts .posts-container .posts-list .post .post_info .post_info__action .post-notLiked {
+  color: #D80000;
+}
+.posts .posts-container .posts-list .post .post_info .post_info__action .fa-comment-dots {
+  color: #393939;
+}
+.posts .posts-container .posts-list .post .post_description {
+  padding: 15px;
   font-family: "Alef Regular";
   font-weight: 700;
   font-size: 14px;

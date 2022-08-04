@@ -19,7 +19,6 @@
                 <fieldset>
                     <?php
                         echo $this->Form->control('festival', [
-                            'required' => true,
                             "placeholder"=>"festival",
                             "label"=>false,
                             ])

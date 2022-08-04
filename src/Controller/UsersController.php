@@ -23,23 +23,26 @@ class UsersController extends AppController
 
     public function login()
     {
-        $this->request->allowMethod(['get', 'post']);
-        $result = $this->Authentication->getResult();
-        // indépendamment de POST ou GET, rediriger si l'utilisateur est connecté
-        if ($result->isValid()) {
-            // rediriger vers /articles après la connexion réussie
-            $redirect = $this->request->getQuery('redirect', [
-                'controller' => 'Users',
-                'action' => 'index',
-            ]);
+        $user = $this->Users->newEmptyEntity();
 
-            return $this->redirect($redirect);
+
+        if($this->request->is(['post'])){
+
+            $result = $this->Authentication->getResult();
+
+            if($result->isValid()){
+                $redirect = $this->request->getQuery('redirect', [
+                    'controller' => 'Posts',
+                    'action' => 'index',
+                ]);
+                return $this->redirect($redirect);
+            }
+            else{
+                $this->Flash->error('Identifiants introuvables');
+            }
         }
-        // afficher une erreur si l'utilisateur a soumis un formulaire
-        // et que l'authentification a échoué
-        if ($this->request->is('post') && !$result->isValid()) {
-            $this->Flash->error(__('Votre identifiant ou votre mot de passe est incorrect.'));
-        }
+        $this->set(compact('user'));
+
     }
 
     /**
@@ -81,11 +84,11 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('Votre compte a bien été créé.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('La création de compte a échoué. Veuillez réessayer.'));
         }
         $this->set(compact('user'));
     }

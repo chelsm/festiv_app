@@ -47,21 +47,18 @@ class LikesController extends AppController
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($post)
     {
-        $like = $this->Likes->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $like = $this->Likes->patchEntity($like, $this->request->getData());
-            if ($this->Likes->save($like)) {
-                $this->Flash->success(__('The like has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The like could not be saved. Please, try again.'));
+        $like = $this->Likes->newEmptyEntity();
+        $like->set(['user_id'=>$this->request->getAttribute('identity')->id]);
+        $like->set(['post_id'=>$post]);
+
+        if ($this->Likes->save($like)) {
+            $this->Flash->success(__('The like has been saved.'));
+            return $this->redirect(['controller'=>'Posts','action' => 'index']);
         }
-        $users = $this->Likes->Users->find('list', ['limit' => 200])->all();
-        $posts = $this->Likes->Posts->find('list', ['limit' => 200])->all();
-        $this->set(compact('like', 'users', 'posts'));
+        $this->Flash->error(__('The like could not be saved. Please, try again.'));
     }
 
     /**
@@ -99,7 +96,7 @@ class LikesController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
+        // $this->request->allowMethod(['post', 'delete']);
         $like = $this->Likes->get($id);
         if ($this->Likes->delete($like)) {
             $this->Flash->success(__('The like has been deleted.'));
@@ -107,6 +104,6 @@ class LikesController extends AppController
             $this->Flash->error(__('The like could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['controller' =>'Posts', 'action' => 'index']);
     }
 }
