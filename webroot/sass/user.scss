@@ -1,6 +1,11 @@
 .users-section{
     padding: 20px;
-    height: 85vh;
+    // max-height: 100vh;
+    // min-height: 85vh;
+    // height: 85vh;
+    .users-view{
+        min-height: 85vh;
+    }
     .users{
         background: #FFFFFF;
         border-radius: 24px;
@@ -8,6 +13,7 @@
         display: flex;
         flex-direction: column;
         padding: 40px 10px;
+        align-items: center;
         .users-info{
             display: flex;
             flex-direction: column;
@@ -36,6 +42,11 @@
                     font-size: 16px;
                     color: #393939;
                     margin-top: 10px;
+                }
+                .fa-user-pen{
+                    background: -webkit-gradient(linear, left top, left bottom, from(rgba(2, 113, 132, 0.49)), to(rgba(199, 54, 24, 0.49)));
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
                 }
             }
             .users-info-description{
@@ -76,8 +87,83 @@
                     }
                 }
             }
-            
-            
+        }
+        .users-edit-title{
+            font-family: "Futura LT Pro Bold";
+            color: #393939;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+            letter-spacing: normal;
+        } 
+        form{
+            color: #004A59;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            gap: 5vh;
+            width: 100%;
+            .users-edit{
+                .input{
+                    width: 100%;
+                    label{
+                        font-family: "Futura LT Pro Bold";
+                        font-size: 16px;
+                        color: #393939;
+                        font-weight: 400;
+                        line-height: 19px;
+                        letter-spacing: normal;
+                    }
+                }
+                input, textarea{
+                    width: 100%;
+                    color: #004A59;
+                    border: none;
+                    border-bottom: solid #004A59;
+                    border-radius: 0;
+                    text-align: start;
+                    padding: 0;
+                    label{
+                        font-family: "Futura LT Pro Bold";
+                        font-size: 16px;
+                        color: #393939;
+                        font-weight: 700;
+                        line-height: 19px;
+                        letter-spacing: normal;
+                    }
+                    &::placeholder {
+                        color: #004A59;
+                        font-family: 'Alef Regular';
+                        font-size: 14px;
+    
+                    }
+                }
+                #firstname, #lastname, #pseudo, #password, #email, #password, #description{
+                    color: #004A59;
+                    font-size: 14px;
+                    margin: 0px;
+                    font-family: 'Alef Regular';
+                }
+                .signup-btn{
+                    border: none;
+                    background: #004A59;
+                    border-radius: 15px;
+                    color: #004A59;
+                    font-family: "Futura LT Pro Bold";
+                    font-size: 1.5rem;
+                    margin: 0;
+                    text-transform: inherit;
+                    display: flex;
+                    cursor: pointer;
+                    width: 100%;
+                    align-items: center;
+                    justify-content: center;
+                    &:hover{
+                        background: #004A59;
+                        color: #004A59;
+                    }
+                }
+            } 
         }
         
     }
@@ -88,3 +174,4 @@
     width: 90px;
     margin: 0px;
 }
+

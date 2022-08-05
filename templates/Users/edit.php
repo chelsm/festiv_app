@@ -5,7 +5,7 @@
  */
 ?>
 <div class="row">
-    <aside class="column">
+    <!-- <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
             <?= $this->Form->postLink(
@@ -15,19 +15,43 @@
             ) ?>
             <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
-    </aside>
-    <div class="column-responsive column-80">
+    </aside> -->
+    <div class="column-responsive column-80 users-section">
         <div class="users form content">
+            <h2 class="users-edit-title">modifier mon profil</h2>
+            <div class="separator"></div>
+
             <?= $this->Form->create($user) ?>
-            <fieldset>
-                <legend><?= __('Edit User') ?></legend>
+            <fieldset class="users-edit users-info">
+                <div  class="users-info-picture">
+                    <?php if ( $user->has('photo')) :?>
+                        <figure>
+                            <img class="user_picture" src='/webroot/img/profils/<?=($user->photo)?>' alt="photo de l'utilisateur" width="100" height="100">
+                        </figure>
+                    <?php else :?>
+                        <figure>
+                            <img class="user_picture" src='/webroot/img/profils/user-no-picture?>' alt="photo de l'utilisateur" width="100" height="100">
+                        </figure>
+                    <?php endif ?>
+                </div>
+                <?php echo $this->Form->control('pseudo', [
+                        "placeholder"=>"pseudo"
+                        ])
+                    ; 
+                ?>
+                <?php echo $this->Form->control('description', [
+                        "placeholder"=>"description",
+                        ])
+                    ; 
+                ?>
+
                 <?php
-                    echo $this->Form->control('pseudo');
+                    // echo $this->Form->control('description');
+
+                    // echo $this->Form->control('pseudo');
                     echo $this->Form->control('firstname');
                     echo $this->Form->control('lastname');
-                    echo $this->Form->control('description');
                     echo $this->Form->control('email');
-                    echo $this->Form->control('password');
 
                 ?>
             </fieldset>

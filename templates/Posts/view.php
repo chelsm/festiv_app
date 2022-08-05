@@ -4,8 +4,8 @@
  * @var \App\Model\Entity\Post $post
  */
 ?>
-<div class="row">
-    <aside class="column">
+<div class="row posts">
+    <!-- <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
             <?= $this->Html->link(__('Edit Post'), ['action' => 'edit', $post->id], ['class' => 'side-nav-item']) ?>
@@ -13,40 +13,37 @@
             <?= $this->Html->link(__('List Posts'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
             <?= $this->Html->link(__('New Post'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
         </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="posts view content">
-            <h3><?= h($post->id) ?></h3>
-            <table>
-                <tr>
-                    <th><?= __('Content') ?></th>
-                    <td><?= h($post->content) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('User') ?></th>
-                    <td><?= $post->has('user') ? $this->Html->link($post->user->id, ['controller' => 'Users', 'action' => 'view', $post->user->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($post->id) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Created') ?></th>
-                    <td><?= h($post->created) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Modified') ?></th>
-                    <td><?= h($post->modified) ?></td>
-                </tr>
-            </table>
-            <div class="text">
-                <strong><?= __('Description') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($post->description)); ?>
-                </blockquote>
-            </div>
-            <div class="related">
-                <h4><?= __('Related Comments') ?></h4>
+    </aside> -->
+    <div class="column-responsive column-80 posts-container">
+        <div class=" view content posts-list">
+            <div class="single-post-view post">
+                <figure>
+                    <img class="post_picture" src='/webroot/img/posts/<?=($post->content)?>' alt='<?= h($post->content) ?>' width="100%" height="auto">
+                </figure>
+                <div class="post_info">
+                    <span class="post_pseudo"><?= $post->has('user') ? $this->Html->link($post->user->pseudo, ['controller' => 'Users', 'action' => 'view', $post->user->id]) : '' ?></span>
+                    <div  class="post_info__action">
+                        <!-- <?= $post ?> -->
+                        <?php if ( $post->likes) :?>
+                            <?php foreach ($post->likes as $like): ?>
+                                <?php if ( $like->user_id === $this->request->getAttribute('identity')->id ) :?>
+                                    <?= $this->Html->link(__('<i class="fa-solid fa-heart post-liked"></i>'), ['controller' => 'Likes','action' => 'delete',  $like->id],['class' => 'superclass', 'escape' => false])?>
+                                <?php else :?>
+                                    <?= $this->Html->link(__('<i class="fa-regular fa-heart post-notLiked"></i>'), ['controller' => 'Likes','action' => 'add',  $post->id],['class' => 'superclass', 'escape' => false])?>
+                                <?php endif ?>
+
+                            <?php endforeach; ?>
+                        <?php else :?>
+                            <?= $this->Html->link(__('<i class="fa-regular fa-heart post-notLiked"></i>'), ['controller' => 'Likes','action' => 'add',  $post->id],['class' => 'superclass', 'escape' => false])?>
+                        <?php endif ?>
+                        <?= $this->Html->link(__('<i class="fa-solid fa-comment-dots"></i>'), ['controller' => 'Comments','action' => 'index', ],['class' => 'superclass', 'escape' => false])?>
+                    </div> 
+                </div>
+                <p class="post_description"><?= $post->description?></p>
+               
+                <div class="separator"></div>
+
+                <div class="related">
                 <?php if (!empty($post->comments)) : ?>
                     
                 <div class="table-responsive">
@@ -77,9 +74,48 @@
                         <?php endforeach; ?>
                     </table>
                 </div>
+                <?php else :?>
+                    <p><?= __('Aucun commentaire') ?></p>
                 <?php endif; ?>
             </div>
-            <div class="related">
+                <!-- <h3><?= h($post->id) ?></h3>
+                <h3 style="color: red;"><?= h($post) ?></h3> -->
+                <!-- <table>
+                    <tr>
+                        <th><?= __('Content') ?></th>
+                        <td><?= h($post->content) ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= __('User') ?></th>
+                        <td><?= $post->has('user') ? $this->Html->link($post->user->id, ['controller' => 'Users', 'action' => 'view', $post->user->id]) : '' ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= __('Id') ?></th>
+                        <td><?= $this->Number->format($post->id) ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= __('Created') ?></th>
+                        <td><?= h($post->created) ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= __('Modified') ?></th>
+                        <td><?= h($post->modified) ?></td>
+                    </tr>
+                </table> -->
+                <!-- <div class="text">
+                    <strong><?= __('Description') ?></strong>
+                    <blockquote>
+                        <?= $this->Text->autoParagraph(h($post->description)); ?>
+                    </blockquote>
+                </div> -->
+            </div>
+
+
+
+            
+
+
+            <!-- <div class="related">
                 <h4><?= __('Related Likes') ?></h4>
                 <?php if (!empty($post->likes)) : ?>
                 <div class="table-responsive">
@@ -109,7 +145,7 @@
                     </table>
                 </div>
                 <?php endif; ?>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

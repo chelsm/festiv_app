@@ -11,9 +11,14 @@
         <section class="posts-list">
                 <?php foreach ($posts as $post): ?>
                     <article class="post">
-                        <figure>
+                        <?= $this->Html->link(__("
+                            <figure>
+                                <img class='user_post' src='/webroot/img/posts/$post->content' alt='post de utilisateur' width='100%' height='100%'>
+                            </figure>
+                        "), ['controller' => 'Posts', 'action' => 'view', $post->id],['class' => 'superclass', 'escape' => false]) ?>
+                        <!-- <figure>
                             <img class="post_picture" src='/webroot/img/posts/<?=($post->content)?>' alt='<?= h($post->content) ?>' width="100%" height="auto">
-                        </figure>
+                        </figure> -->
                         <div class="post_info">
                             <span class="post_pseudo"><?= $post->has('user') ? $this->Html->link($post->user->pseudo, ['controller' => 'Users', 'action' => 'view', $post->user->id]) : '' ?></span>
                             <div  class="post_info__action">

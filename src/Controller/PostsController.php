@@ -46,8 +46,9 @@ class PostsController extends AppController
     {
         $post = $this->Posts->get($id, [
             'contain' => ['Users', 'Comments', 'Likes'],
+            'limit' => 5
         ]);
-
+        
         $this->set(compact('post'));
     }
 

@@ -1,7 +1,6 @@
 .posts{
     padding: 15px;
     .posts-container{
-
         .posts-list{
             display: flex;
             justify-content: center;
@@ -55,17 +54,30 @@
                     }
                 }
                 .post_description{
-                    padding: 15px;
+                    padding: 0px 15px;
                     font-family: "Alef Regular";
                     font-weight: 700;
                     font-size: 14px;
                     color: #393939;
+                    text-align: left;
+                }
+                .separator{
+                    margin: 10px auto;
+                    width: 90%;
+                    height: 2px;
+                    background: 
+                        linear-gradient(rgba(2, 113, 132, 0.76), rgba(199, 54, 24, 0.76)) padding-box,
+                        linear-gradient(to left, rgba(2, 113, 132, 0.76), rgba(199, 54, 24, 0.76)) border-box;
                     margin-top: 10px;
                     margin-bottom: 10px;
-                    text-align: left;
                 }
                
             }
         }
+    }
+    .single-post-view{
+        border: solid blue;
+        background: #FFFFFF;
+        border-radius: 24px;
     }
 }

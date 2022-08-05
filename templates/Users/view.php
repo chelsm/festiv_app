@@ -5,17 +5,16 @@
  */
 ?>
 <div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id], ['class' => 'side-nav-item']) ?>
+    <!-- <aside class="column"> -->
+        <!-- <div class="side-nav"> -->
+            <!-- <?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id], ['class' => 'side-nav-item']) ?> -->
             <!-- <?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'side-nav-item']) ?> -->
             <!-- <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?> -->
             <!-- <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'side-nav-item']) ?> -->
-        </div>
-    </aside>
+        <!-- </div> -->
+    <!-- </aside> -->
     <div class="column-responsive column-80 users-section">
-        <div class="users view content">
-            <!-- <h3><?= h($user->id) ?></h3> -->
+        <div class="users view content users-view">
 
             <div  class="users-info">
                 <div  class="users-info-picture">
