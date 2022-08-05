@@ -8,15 +8,61 @@
     <aside class="column">
         <div class="side-nav">
             <?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'side-nav-item']) ?>
+            <!-- <?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'side-nav-item']) ?> -->
             <!-- <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?> -->
             <!-- <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'side-nav-item']) ?> -->
         </div>
     </aside>
-    <div class="column-responsive column-80">
+    <div class="column-responsive column-80 users-section">
         <div class="users view content">
-            <h3><?= h($user->id) ?></h3>
-            <table>
+            <!-- <h3><?= h($user->id) ?></h3> -->
+
+            <div  class="users-info">
+                <div  class="users-info-picture">
+                    <?php if ( $user->has('photo')) :?>
+                        <figure>
+                            <img class="user_picture" src='/webroot/img/profils/<?=($user->photo)?>' alt="photo de l'utilisateur" width="100" height="100">
+                        </figure>
+                    <?php else :?>
+                        <figure>
+                            <img class="user_picture" src='/webroot/img/profils/user-no-picture?>' alt="photo de l'utilisateur" width="100" height="100">
+                        </figure>
+                    <?php endif ?>
+                </div>
+                <div  class="users-info-name">
+                    <h2 class="users-pseudo"><?= h($user->pseudo) ?></h2>
+                    <?= $this->Html->link('<i class="fa-solid fa-user-pen"></i>', ['controller'=>'Users','action'=>'edit',$this->request->getAttribute('identity')->id ],['class' => 'superclass', 'escape' => false]) ?>
+                </div>
+                <p class="users-info-description">
+                    <?= h($user->description); ?>
+                </p>
+            </div>
+
+            <div class="separator"></div>
+
+            <div  class="users-posts">
+                <?php if (!empty($user->posts)) : ?>
+                    <ul>
+                    <?php foreach ($user->posts as $posts) : ?>
+                        <!-- <figure>
+                            <img class="user_post" src='/webroot/img/posts/<?=($posts->content)?>' alt="post de l'utilisateur" width="100%" height="100%">
+                        </figure> -->
+                        <li>
+                            <?= $this->Html->link(__("
+                                <figure>
+                                    <img class='user_post' src='/webroot/img/posts/$posts->content' alt='post de utilisateur' width='100%' height='100%'>
+                                </figure>
+                            "), ['controller' => 'Posts', 'action' => 'view', $posts->id],['class' => 'superclass', 'escape' => false]) ?>
+                        </li>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+
+            
+
+
+
+            <!-- <table>
                 <tr>
                     <th><?= __('Pseudo') ?></th>
                     <td><?= h($user->pseudo) ?></td>
@@ -29,17 +75,6 @@
                     <th><?= __('Lastname') ?></th>
                     <td><?= h($user->lastname) ?></td>
                 </tr>
-                <a href="/users/picture/<?= $user->id ?>">
-                    <tr>
-                        <!-- <?= $this->Html->link(__('oui'), ['action' => 'picture', $user->id], ['class' => 'picture_item']) ?> -->
-
-                        <th><?= __('Photo') ?></th>
-                        <td><?= h($user->photo) ?></td>
-                        <figure>
-                            <img class="user_picture" src='/webroot/img/profils/<?=($user->photo)?>' alt='<?= h($user->photo) ?>' width="100" height="100">
-                        </figure>
-                    </tr>
-                </a>
                 <tr>
                     <th><?= __('Email') ?></th>
                     <td><?= h($user->email) ?></td>
@@ -60,14 +95,9 @@
                     <th><?= __('Festival') ?></th>
                     <td><?= $user->festival ? __('Yes') : __('No'); ?></td>
                 </tr>
-            </table>
-            <div class="text">
-                <strong><?= __('Description') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($user->description)); ?>
-                </blockquote>
-            </div>
-            <div class="related">
+            </table> -->
+
+            <!-- <div class="related">
                 <h4><?= __('Related Comments') ?></h4>
                 <?php if (!empty($user->comments)) : ?>
                 <div class="table-responsive">
@@ -99,8 +129,11 @@
                     </table>
                 </div>
                 <?php endif; ?>
-            </div>
-            <div class="related">
+            </div> -->
+
+
+
+            <!-- <div class="related">
                 <h4><?= __('Related Likes') ?></h4>
                 <?php if (!empty($user->likes)) : ?>
                 <div class="table-responsive">
@@ -130,8 +163,10 @@
                     </table>
                 </div>
                 <?php endif; ?>
-            </div>
-            <div class="related">
+            </div> -->
+
+
+            <!-- <div class="related">
                 <h4><?= __('Related Posts') ?></h4>
                 <?php if (!empty($user->posts)) : ?>
                 <div class="table-responsive">
@@ -163,7 +198,7 @@
                     </table>
                 </div>
                 <?php endif; ?>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

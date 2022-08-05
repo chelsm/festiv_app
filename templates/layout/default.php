@@ -37,29 +37,33 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body 
-    <?= str_contains($_SERVER[ 'REQUEST_URI' ],'/users/login') || str_contains($_SERVER[ 'REQUEST_URI' ],'/users/add') || $_SERVER[ 'REQUEST_URI' ]=== '/'? 
+    <?= str_contains($_SERVER[ 'REQUEST_URI' ],'/users/login') || str_contains($_SERVER[ 'REQUEST_URI' ],'/users/add')? 
     'class = bg_connexion 
     style = "background-image: url(../img/app_design/bg_home.webp)"' 
     : 
     'class = bg_initial 
     style = "background: linear-gradient(168.13deg, rgba(0, 138, 166, 0.2) 25%, rgba(246, 162, 120, 0.2) 61.81%)"' ?>
-><!--
-    <nav class="top-nav">
-        <div class="top-nav-title">
+>
+<?php if ($this->request->getAttribute('identity')) :?>
+    <nav class="nav">
+        <!-- <div class="top-nav-title">
             <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
-        </div>
-        <div class="top-nav-links">
-            <?php if ($this->request->getAttribute('identity') == null) :?>
-                <?= $this->Html->link('Créer un compte', ['controller'=>'Users','action'=>'add']) ?>
-                <?= $this->Html->link('Se connecter', ['controller'=>'Users','action'=>'login']) ?>
-            <?php else : ?>
-                <?= $this->Html->link('Mon compte', ['controller'=>'Users','action'=>'view',$this->request->getAttribute('identity')->id ]) ?>
-                <?= $this->Html->link('Ajout Posts', ['controller'=>'Posts','action'=>'add' ]) ?>
-                <?= $this->Html->link('Se deconnecter', ['controller'=>'Users','action'=>'logout']) ?>
-            <?php endif; ?>
-        </div>
+        </div> -->
+            <div class="nav-links">
+                    <?= $this->Html->link('<i class="fa-solid fa-house"></i>', ['controller'=>'Posts','action'=>'index'],['class' => 'superclass', 'escape' => false]) ?>
+                    <?= $this->Html->link('<i class="fa-solid fa-magnifying-glass"></i>', ['controller'=>'Posts','action'=>'index'],['class' => 'superclass', 'escape' => false]) ?>
+                    <?= $this->Html->link('<i class="fa-solid fa-message"></i>', ['controller'=>'Messages','action'=>'index'],['class' => 'superclass', 'escape' => false]) ?>
+                    <?= $this->Html->link('<i class="fa-solid fa-user"></i>', ['controller'=>'Users','action'=>'view',$this->request->getAttribute('identity')->id ],['class' => 'superclass', 'escape' => false]) ?>
+                    <?= $this->Html->link('<i class="fa-solid fa-plus"></i>', ['controller'=>'Posts','action'=>'add' ],['class' => 'addPost_icon', 'superclass', 'escape' => false]) ?>
+
+                    <!-- <?= $this->Html->link('Mon compte', ['controller'=>'Users','action'=>'view',$this->request->getAttribute('identity')->id ]) ?>
+                    <?= $this->Html->link('Ajout Posts', ['controller'=>'Posts','action'=>'add' ]) ?>
+                    <?= $this->Html->link('Se deconnecter', ['controller'=>'Users','action'=>'logout']) ?> -->
+            </div>
     </nav>
-     -->
+<?php endif; ?>
+
+    
     <main class="main">
         <div class="container">
             <?= $this->Flash->render() ?>

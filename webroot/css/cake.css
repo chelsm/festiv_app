@@ -69,9 +69,85 @@ figure img {
   clear: both;
 }
 
-.user_picture {
+.users-section {
+  padding: 20px;
+  height: 85vh;
+}
+.users-section .users {
+  background: #FFFFFF;
+  border-radius: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 10px;
+}
+.users-section .users .users-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+.users-section .users .users-info .users-info-picture {
+  display: inline-block;
+  overflow: hidden;
+  height: 90px;
+  width: 90px;
+  width: fit-content;
+  background: linear-gradient(white, white) padding-box, linear-gradient(to right, rgba(2, 113, 132, 0.49), rgba(199, 54, 24, 0.49)) border-box;
+  border-radius: 100%;
+  border: 1px solid transparent;
+}
+.users-section .users .users-info .users-info-name {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+.users-section .users .users-info .users-info-name .users-pseudo {
+  font-family: "Futura LT Pro Bold";
+  font-size: 16px;
+  color: #393939;
+  margin-top: 10px;
+}
+.users-section .users .users-info .users-info-description {
+  font-family: "Alef Regular";
+  font-weight: 700;
+  font-size: 12px;
+  color: #393939;
+  text-align: left;
+}
+.users-section .users .separator {
+  margin: 10px auto;
+  width: 90%;
+  height: 2px;
+  background: linear-gradient(rgba(2, 113, 132, 0.76), rgba(199, 54, 24, 0.76)) padding-box, linear-gradient(to left, rgba(2, 113, 132, 0.76), rgba(199, 54, 24, 0.76)) border-box;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.users-section .users .users-posts ul {
+  grid: auto-flow/1fr 1fr 1fr;
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+.users-section .users .users-posts ul li {
+  width: fit-content;
+  margin: 0px;
+}
+.users-section .users .users-posts ul li figure {
+  display: inline-block;
+  overflow: hidden;
   height: 100px;
   width: 100px;
+  border-radius: 10px;
+}
+
+.user_picture {
+  height: 90px;
+  width: 90px;
+  margin: 0px;
 }
 
 .users_login {
@@ -194,7 +270,7 @@ figure img {
 .users_signup .users_add_section form input::placeholder {
   color: #FFFFFF;
   font-family: "Alef Regular";
-  font-size: 1.5em;
+  font-size: 14px;
 }
 .users_signup .users_add_section form #firstname, .users_signup .users_add_section form #lastname, .users_signup .users_add_section form #pseudo, .users_signup .users_add_section form #password, .users_signup .users_add_section form #email, .users_signup .users_add_section form #password {
   color: #FFFFFF;
@@ -243,6 +319,7 @@ figure img {
   flex-direction: column;
   gap: 25px;
   align-items: center;
+  padding-bottom: 90px;
 }
 .posts .posts-container .posts-list .post {
   color: red;
@@ -309,6 +386,50 @@ figure img {
   font-family: "Alef Regular";
   src: url("../font/Alef-Regular.ttf") format("truetype");
 }
+body {
+  position: relative;
+}
+
+.nav {
+  position: fixed;
+  bottom: 0px;
+  z-index: 1;
+  background: #FFFFFF;
+  border-radius: 30px 30px 0px 0px;
+  width: 100%;
+  height: 65px;
+}
+.nav .nav-links {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+}
+.nav .nav-links a i {
+  font-size: 25px;
+  color: #393939;
+}
+.nav .nav-links .addPost_icon {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background: #F6A278;
+  display: flex;
+  align-items: center;
+  top: -10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  justify-content: center;
+  border-radius: 100%;
+}
+.nav .nav-links .addPost_icon i {
+  font-size: 30px;
+  color: #FFFFFF;
+}
+
 .bg_initial {
   min-height: 100vh;
 }
