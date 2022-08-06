@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Post $post
  */
 ?>
-<div class="row posts">
+<div class="posts">
     <!-- <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
@@ -36,48 +36,72 @@
                         <?php else :?>
                             <?= $this->Html->link(__('<i class="fa-regular fa-heart post-notLiked"></i>'), ['controller' => 'Likes','action' => 'add',  $post->id],['class' => 'superclass', 'escape' => false])?>
                         <?php endif ?>
-                        <?= $this->Html->link(__('<i class="fa-solid fa-comment-dots"></i>'), ['controller' => 'Comments','action' => 'index', ],['class' => 'superclass', 'escape' => false])?>
+                        <?= $this->Html->link(__('<i class="fa-solid fa-comment-dots"></i>'), ['controller' => 'Comments','action' => 'add', $post->id ],['class' => 'superclass', 'escape' => false])?>
                     </div> 
                 </div>
                 <p class="post_description"><?= $post->description?></p>
                
                 <div class="separator"></div>
 
-                <div class="related">
+                <div class="all-comments all-comments-view ">
                 <?php if (!empty($post->comments)) : ?>
-                    
-                <div class="table-responsive">
-                    <table>
-                        <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('Created') ?></th>
-                            <th><?= __('Modified') ?></th>
-                            <th><?= __('Content') ?></th>
-                            <th><?= __('User Id') ?></th>
-                            <th><?= __('Post Id') ?></th>
-                            <th class="actions"><?= __('Actions') ?></th>
-                        </tr>
-                        <?php foreach ($post->comments as $comments) : ?>
-                        <tr>
-                            <td><?= h($comments->id) ?></td>
-                            <td><?= h($comments->created) ?></td>
-                            <td><?= h($comments->modified) ?></td>
-                            <td><?= h($comments->content) ?></td>
-                            <td><?= h($comments->user_id) ?></td>
-                            <td><?= h($comments->post_id) ?></td>
-                            <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'Comments', 'action' => 'view', $comments->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'Comments', 'action' => 'edit', $comments->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Comments', 'action' => 'delete', $comments->id], ['confirm' => __('Are you sure you want to delete # {0}?', $comments->id)]) ?>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </table>
-                </div>
+                    <?php foreach ($post->comments as $comments) : ?>
+                        <div class="post post-comm">
+                            <div class="user">
+                                <div class="users-info-picture mini-users-picture">
+                                    <?php if ( $comments->user->has('photo')) :?>
+                                        <figure>
+                                            <img class="user_picture" src='/webroot/img/profils/<?=($comments->user->photo)?>' alt="photo de l'utilisateur" width="100" height="100">
+                                        </figure>
+                                    <?php else :?>
+                                        <figure>
+                                            <img class="user_picture" src='/webroot/img/profils/user-no-picture?>' alt="photo de l'utilisateur" width="100" height="100">
+                                        </figure>
+                                    <?php endif ?>
+                                </div> 
+                                <?= $this->Html->link(__($comments->user->pseudo), ['controller' => 'Users','action' => 'view',  $comments->user->id],['class' => 'superclass search-title name-user-comm', 'escape' => false])?>
+                            </div>
+                            <p class="post-descr"><?=$comments->content ?></p>
+                        </div>
+                    <?php endforeach; ?>
                 <?php else :?>
-                    <p><?= __('Aucun commentaire') ?></p>
+                    <span class="search-title" ><?= __('Aucun commentaire') ?></span>
                 <?php endif; ?>
             </div>
+
+                <!-- <div class="related">
+                <?php if (!empty($post->comments)) : ?>
+                    
+                    <div class="table-responsive">
+                        <table>
+                            <tr>
+                                <th><?= __('Id') ?></th>
+                                <th><?= __('Created') ?></th>
+                                <th><?= __('Modified') ?></th>
+                                <th><?= __('Content') ?></th>
+                                <th><?= __('User Id') ?></th>
+                                <th><?= __('Post Id') ?></th>
+                                <th class="actions"><?= __('Actions') ?></th>
+                            </tr>
+                            <?php foreach ($post->comments as $comments) : ?>
+                            <tr>
+                                <td><?= h($comments->id) ?></td>
+                                <td><?= h($comments->content) ?></td>
+                                <td><?= h($comments->user_id) ?></td>
+                                <td><?= h($comments->post_id) ?></td>
+                                <td class="actions">
+                                    <?= $this->Html->link(__('View'), ['controller' => 'Comments', 'action' => 'view', $comments->id]) ?>
+                                    <?= $this->Html->link(__('Edit'), ['controller' => 'Comments', 'action' => 'edit', $comments->id]) ?>
+                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Comments', 'action' => 'delete', $comments->id], ['confirm' => __('Are you sure you want to delete # {0}?', $comments->id)]) ?>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </table>
+                    </div>
+                <?php else :?>
+                    <span class="search-title"><?= __('Aucun commentaire') ?></span>
+                <?php endif; ?>
+            </div> -->
                 <!-- <h3><?= h($post->id) ?></h3>
                 <h3 style="color: red;"><?= h($post) ?></h3> -->
                 <!-- <table>

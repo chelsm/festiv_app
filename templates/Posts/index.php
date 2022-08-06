@@ -5,8 +5,6 @@
  */
 ?>
 <div class="posts index content">
-    <!-- <?= $this->Html->link(__('New Post'), ['action' => 'add'], ['class' => 'button float-right']) ?> -->
-    <!-- <h3><?= __('Posts') ?></h3> -->
     <div class="posts-container">
         <section class="posts-list">
                 <?php foreach ($posts as $post): ?>
@@ -16,9 +14,6 @@
                                 <img class='user_post' src='/webroot/img/posts/$post->content' alt='post de utilisateur' width='100%' height='100%'>
                             </figure>
                         "), ['controller' => 'Posts', 'action' => 'view', $post->id],['class' => 'superclass', 'escape' => false]) ?>
-                        <!-- <figure>
-                            <img class="post_picture" src='/webroot/img/posts/<?=($post->content)?>' alt='<?= h($post->content) ?>' width="100%" height="auto">
-                        </figure> -->
                         <div class="post_info">
                             <span class="post_pseudo"><?= $post->has('user') ? $this->Html->link($post->user->pseudo, ['controller' => 'Users', 'action' => 'view', $post->user->id]) : '' ?></span>
                             <div  class="post_info__action">
@@ -34,7 +29,7 @@
                                 <?php else :?>
                                     <?= $this->Html->link(__('<i class="fa-regular fa-heart post-notLiked"></i>'), ['controller' => 'Likes','action' => 'add',  $post->id],['class' => 'superclass', 'escape' => false])?>
                                 <?php endif ?>
-                                <?= $this->Html->link(__('<i class="fa-solid fa-comment-dots"></i>'), ['controller' => 'Comments','action' => 'index', ],['class' => 'superclass', 'escape' => false])?>
+                                <?= $this->Html->link(__('<i class="fa-solid fa-comment-dots"></i>'), ['controller' => 'Comments','action' => 'add',  $post->id ],['class' => 'superclass', 'escape' => false])?>
                             </div> 
                         </div>
                         <p class="post_description"><?= $post->description?></p>

@@ -6,26 +6,71 @@
  * @var \Cake\Collection\CollectionInterface|string[] $posts
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Comments'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+<div class="comments-section">
+    <div class="comments form content">
+        <h2 class="title-page">commentaires</h2>
+        <div class="separator"></div>
+
+        <div class="post">
+            <div class="user">
+                <div class="users-info-picture mini-users-picture">
+                    <?php if ( $myPost->user->has('photo')) :?>
+                        <figure>
+                            <img class="user_picture" src='/webroot/img/profils/<?=($s->photo)?>' alt="photo de l'utilisateur" width="100" height="100">
+                        </figure>
+                    <?php else :?>
+                        <figure>
+                            <img class="user_picture" src='/webroot/img/profils/user-no-picture?>' alt="photo de l'utilisateur" width="100" height="100">
+                        </figure>
+                    <?php endif ?>
+                </div> 
+                <?= $this->Html->link(__($myPost->user->pseudo ), ['controller' => 'Users','action' => 'view',  $myPost->user->id],['class' => 'superclass search-title name-user-comm', 'escape' => false])?>
+            </div>
+            <p class="post-descr"><?=$myPost->description ?></p>
         </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="comments form content">
-            <?= $this->Form->create($comment) ?>
-            <fieldset>
-                <legend><?= __('Add Comment') ?></legend>
-                <?php
-                    echo $this->Form->control('content');
-                    echo $this->Form->control('user_id', ['options' => $users]);
-                    echo $this->Form->control('post_id', ['options' => $posts]);
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
-        </div>
+        <div class='line'></div>
+
+
+        <div class="all-comments">
+                <?php if (!empty($myPost->comments)) : ?>
+                    <?php foreach ($myPost->comments as $comments) : ?>
+                        <div class="post">
+                            <div class="user">
+                                <div class="users-info-picture mini-users-picture">
+                                    <?php if ( $comments->user->has('photo')) :?>
+                                        <figure>
+                                            <img class="user_picture" src='/webroot/img/profils/<?=($comments->user->photo)?>' alt="photo de l'utilisateur" width="100" height="100">
+                                        </figure>
+                                    <?php else :?>
+                                        <figure>
+                                            <img class="user_picture" src='/webroot/img/profils/user-no-picture?>' alt="photo de l'utilisateur" width="100" height="100">
+                                        </figure>
+                                    <?php endif ?>
+                                </div> 
+                                <?= $this->Html->link(__($comments->user->pseudo), ['controller' => 'Users','action' => 'view',  $comments->user->id],['class' => 'superclass search-title name-user-comm', 'escape' => false])?>
+                            </div>
+                            <p class="post-descr"><?=$comments->content ?></p>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else :?>
+                    <span class="search-title" ><?= __('Aucun commentaire') ?></span>
+                <?php endif; ?>
+            </div>
+
+
+        <?= $this->Form->create($comment) ?>
+        <fieldset>
+            <?php
+                echo $this->Form->control('content', [
+                    "placeholder"=>"Ajouter un commentaire ... ",
+                    "label"=>false,
+                    ])
+                ;
+            ?>
+        </fieldset>
+        <button type="submit">
+            <i class="fa-solid fa-heart fa-paper-plane" ></i>
+        </button>
+        <?= $this->Form->end() ?>
     </div>
 </div>

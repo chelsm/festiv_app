@@ -68,17 +68,17 @@ class CommentsTable extends Table
     {
         $validator
             ->scalar('content')
-            ->requirePresence('content', 'create')
+            ->requirePresence('content')
             ->notEmptyString('content');
 
         $validator
             ->integer('user_id')
-            ->requirePresence('user_id', 'create')
+            // ->requirePresence('user_id')
             ->notEmptyString('user_id');
 
         $validator
             ->integer('post_id')
-            ->requirePresence('post_id', 'create')
+            // ->requirePresence('post_id')
             ->notEmptyString('post_id');
 
         return $validator;

@@ -19,7 +19,7 @@
                 <?php foreach($tabS as $s) : ?>
                     <li>
                         <a href='/users/view/<?= $s->id?>'>
-                            <div class="users-info-picture search-users-picture">
+                            <div class="users-info-picture mini-users-picture">
                                 <?php if ( $s->has('photo')) :?>
                                     <figure>
                                         <img class="user_picture" src='/webroot/img/profils/<?=($s->photo)?>' alt="photo de l'utilisateur" width="100" height="100">

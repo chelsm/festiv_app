@@ -47,21 +47,36 @@ class CommentsController extends AppController
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($id_post = null)
     {
+
         $comment = $this->Comments->newEmptyEntity();
+        $comment->set(['user_id'=>$this->request->getAttribute('identity')->id]);
+        $comment->set(['post_id'=>$id_post]);
+
+        $this->loadModel('Posts');
+        $myPost = $this->Posts->get($id_post, [
+            'contain' => ['Users', 'Comments', 'Comments.Users', 'Likes'],
+        ]);
+
+        $this->loadModel('Users');
+        // $usersComment = $this->Users->find('all')
+        //     ->contain(['Comments'])
+        //     ->toArray()
+        // ;
+
         if ($this->request->is('post')) {
             $comment = $this->Comments->patchEntity($comment, $this->request->getData());
             if ($this->Comments->save($comment)) {
                 $this->Flash->success(__('The comment has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller'=>'Posts','action' => 'view', $id_post]);
             }
             $this->Flash->error(__('The comment could not be saved. Please, try again.'));
         }
-        $users = $this->Comments->Users->find('list', ['limit' => 200])->all();
-        $posts = $this->Comments->Posts->find('list', ['limit' => 200])->all();
-        $this->set(compact('comment', 'users', 'posts'));
+        // $users = $this->Comments->Users->find('list', ['limit' => 200])->all();
+        // $posts = $this->Comments->Posts->find('list', ['limit' => 200])->all();
+        $this->set(compact('comment', 'myPost'));
     }
 
     /**
