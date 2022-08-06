@@ -15,7 +15,6 @@
     <!-- </aside> -->
     <div class="column-responsive column-80 users-section">
         <div class="users view content users-view">
-
             <div  class="users-info">
                 <div  class="users-info-picture">
                     <?php if ( $user->has('photo')) :?>
@@ -30,7 +29,9 @@
                 </div>
                 <div  class="users-info-name">
                     <h2 class="users-pseudo"><?= h($user->pseudo) ?></h2>
-                    <?= $this->Html->link('<i class="fa-solid fa-user-pen"></i>', ['controller'=>'Users','action'=>'edit',$this->request->getAttribute('identity')->id ],['class' => 'superclass', 'escape' => false]) ?>
+                    <?php if ($user->id == $this->request->getAttribute('identity')->id) :?>
+                       <?= $this->Html->link('<i class="fa-solid fa-user-pen"></i>', ['controller'=>'Users','action'=>'edit',$this->request->getAttribute('identity')->id ],['class' => 'superclass', 'escape' => false]) ?>
+                    <?php endif ?>
                 </div>
                 <p class="users-info-description">
                     <?= h($user->description); ?>
@@ -43,9 +44,6 @@
                 <?php if (!empty($user->posts)) : ?>
                     <ul>
                     <?php foreach ($user->posts as $posts) : ?>
-                        <!-- <figure>
-                            <img class="user_post" src='/webroot/img/posts/<?=($posts->content)?>' alt="post de l'utilisateur" width="100%" height="100%">
-                        </figure> -->
                         <li>
                             <?= $this->Html->link(__("
                                 <figure>
@@ -54,6 +52,8 @@
                             "), ['controller' => 'Posts', 'action' => 'view', $posts->id],['class' => 'superclass', 'escape' => false]) ?>
                         </li>
                     <?php endforeach; ?>
+                <?php else :?>
+                    <span class="search-title"><?=$user->pseudo ?> n'a encore publié aucun contenu</span>
                 <?php endif; ?>
             </div>
 

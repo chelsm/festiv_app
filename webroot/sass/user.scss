@@ -19,18 +19,6 @@
             flex-direction: column;
             gap: 15px;
             align-items: center;
-            .users-info-picture{
-                display: inline-block;
-                overflow: hidden;
-                height: 90px; 
-                width: 90px;
-                width: fit-content;
-                background: 
-                linear-gradient(white,white) padding-box,
-                linear-gradient(to right, rgba(2, 113, 132, 0.49), rgba(199, 54, 24, 0.49)) border-box;
-                border-radius: 100%;
-                border: 1px solid transparent;
-            }
             .users-info-name{
                 display: flex;
                 gap: 16px;
@@ -57,16 +45,7 @@
                 text-align: left;
             }
         }
-        .separator{
-            margin: 10px auto;
-            width: 90%;
-            height: 2px;
-            background: 
-                linear-gradient(rgba(2, 113, 132, 0.76), rgba(199, 54, 24, 0.76)) padding-box,
-                linear-gradient(to left, rgba(2, 113, 132, 0.76), rgba(199, 54, 24, 0.76)) border-box;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
+        
         .users-posts{
             ul{
                 grid: auto-flow / 1fr 1fr 1fr;

@@ -2,6 +2,7 @@
 @import 'user';
 @import 'connection';
 @import 'listPost';
+@import 'search';
 
 @font-face {
     font-family: 'Futura LT Pro Bold';
@@ -67,7 +68,9 @@ body{
 }
 
 .main{
-    height: 100%;
+    // height: 100%;
+    min-height: calc( 100vh - 65px );
+    // height: calc( 100vh - 65px );
     .container{
         height: 100%;
         padding: 0px;
@@ -77,4 +80,37 @@ body{
 .row{
     align-items: center;
     justify-content: center;
+}
+.separator{
+    margin: 10px auto;
+    width: 90%;
+    height: 2px;
+    background: 
+        linear-gradient(rgba(2, 113, 132, 0.76), rgba(199, 54, 24, 0.76)) padding-box,
+        linear-gradient(to left, rgba(2, 113, 132, 0.76), rgba(199, 54, 24, 0.76)) border-box;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.title-page{
+    font-family: "Futura LT Pro Bold";
+    color: #393939;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: normal;  
+    text-align: center;
+}
+
+.users-info-picture{
+    display: inline-block;
+    overflow: hidden;
+    height: 90px; 
+    width: 90px;
+    width: fit-content;
+    background: 
+    linear-gradient(white,white) padding-box,
+    linear-gradient(to right, rgba(2, 113, 132, 0.49), rgba(199, 54, 24, 0.49)) border-box;
+    border-radius: 100%;
+    border: 1px solid transparent;
 }

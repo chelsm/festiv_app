@@ -51,7 +51,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </div> -->
             <div class="nav-links">
                     <?= $this->Html->link('<i class="fa-solid fa-house"></i>', ['controller'=>'Posts','action'=>'index'],['class' => 'superclass', 'escape' => false]) ?>
-                    <?= $this->Html->link('<i class="fa-solid fa-magnifying-glass"></i>', ['controller'=>'Posts','action'=>'index'],['class' => 'superclass', 'escape' => false]) ?>
+                    <?= $this->Html->link('<i class="fa-solid fa-magnifying-glass"></i>', ['controller'=>'Users','action'=>'search'],['class' => 'superclass', 'escape' => false]) ?>
                     <?= $this->Html->link('<i class="fa-solid fa-message"></i>', ['controller'=>'Messages','action'=>'index'],['class' => 'superclass', 'escape' => false]) ?>
                     <?= $this->Html->link('<i class="fa-solid fa-user"></i>', ['controller'=>'Users','action'=>'view',$this->request->getAttribute('identity')->id ],['class' => 'superclass', 'escape' => false]) ?>
                     <?= $this->Html->link('<i class="fa-solid fa-plus"></i>', ['controller'=>'Posts','action'=>'add' ],['class' => 'addPost_icon', 'superclass', 'escape' => false]) ?>

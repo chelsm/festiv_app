@@ -28,11 +28,11 @@
                             <?php foreach ($post->likes as $like): ?>
                                 <?php if ( $like->user_id === $this->request->getAttribute('identity')->id ) :?>
                                     <?= $this->Html->link(__('<i class="fa-solid fa-heart post-liked"></i>'), ['controller' => 'Likes','action' => 'delete',  $like->id],['class' => 'superclass', 'escape' => false])?>
-                                <?php else :?>
-                                    <?= $this->Html->link(__('<i class="fa-regular fa-heart post-notLiked"></i>'), ['controller' => 'Likes','action' => 'add',  $post->id],['class' => 'superclass', 'escape' => false])?>
                                 <?php endif ?>
-
                             <?php endforeach; ?>
+                            <?php if ( $like->user_id !== $this->request->getAttribute('identity')->id ) :?>
+                                <?= $this->Html->link(__('<i class="fa-regular fa-heart post-notLiked"></i>'), ['controller' => 'Likes','action' => 'add',  $post->id],['class' => 'superclass', 'escape' => false])?>
+                            <?php endif ?>
                         <?php else :?>
                             <?= $this->Html->link(__('<i class="fa-regular fa-heart post-notLiked"></i>'), ['controller' => 'Likes','action' => 'add',  $post->id],['class' => 'superclass', 'escape' => false])?>
                         <?php endif ?>

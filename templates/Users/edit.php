@@ -18,7 +18,7 @@
     </aside> -->
     <div class="column-responsive column-80 users-section">
         <div class="users form content">
-            <h2 class="users-edit-title">modifier mon profil</h2>
+            <h2 class="title-page">modifier mon profil</h2>
             <div class="separator"></div>
 
             <?= $this->Form->create($user) ?>
@@ -46,12 +46,18 @@
                 ?>
 
                 <?php
-                    // echo $this->Form->control('description');
-
-                    // echo $this->Form->control('pseudo');
-                    echo $this->Form->control('firstname');
-                    echo $this->Form->control('lastname');
-                    echo $this->Form->control('email');
+                    echo $this->Form->control('firstname', [
+                        "placeholder"=>"firstname",
+                        ])
+                    ; 
+                    echo $this->Form->control('lastname', [
+                        "placeholder"=>"lastname",
+                        ])
+                    ; 
+                    echo $this->Form->control('email', [
+                        "placeholder"=>"email",
+                    ])
+                    ; 
 
                 ?>
             </fieldset>

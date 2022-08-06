@@ -220,4 +220,54 @@ class UsersController extends AppController
 		$this->set(compact('a'));
 
 	}
+
+    public function search (){
+        $this->set('randUsers', $this->Users->find('all', array(
+            'limit' => 3,
+            'conditions' => ['Users.id !=' => $this->request->getAttribute('identity')->id],
+            'order'=>'rand()'
+        )));
+
+        $this->loadModel('Likes');
+
+        // $this->set('randPosts', $this->Posts->find('all', array(
+        //     'limit' => 6,
+        //     'order'=>'rand()'
+        // )));
+
+        $topFivePost = $this->Likes->find('all')
+            ->contain(['Posts'])
+            ->select(['post_id','Posts.content', 'nb' => 'COUNT(*)'])
+            ->group(['post_id'])
+            ->order(['nb' => 'DESC'])
+            ->limit(5)
+            ->toArray()
+        ;
+
+		$this->set(compact('topFivePost'));
+
+
+    }
+
+    public function searchuser (){
+
+        if($this->request->is(['put', 'patch', 'post'])){
+            $search  = ($this->request->getData('search'));
+
+            $tabS = $this->Users->find()->where([
+                'OR' => [
+                    ['pseudo LIKE' => '%'.$search.'%'], 
+                    ['firstname LIKE' => '%'.$search.'%'],
+                    ['lastname LIKE' => '%'.$search.'%']
+                ]
+            ]) ;
+        }
+        else{
+            return $this->redirect(['controller'=>'Users','action'=> 'search']);
+        }
+
+
+        $this->set(compact('search', 'tabS'));
+
+    }
 }
