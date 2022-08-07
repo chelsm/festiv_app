@@ -29,10 +29,57 @@ class MessagesController extends AppController
             $this->Messages
             ->find()
             ->contain(['Receivers', 'Senders'])
-        );
+            ->where([
+                'OR' => [
+                    ['Receivers.id' =>  $this->request->getAttribute('identity')->id],
+                    ['Senders.id' =>  $this->request->getAttribute('identity')->id]
+                ]
+            ])) ;
         ;
 
-        $this->set(compact('messages'));
+        $list = [];
+        $list2 = [];
+        $tmpList;
+
+        // foreach ($messages as $u) {
+        //     $tmpList = $u;
+        //     foreach ($messages as $m) {
+        //         if($tmpList->receiver_id === $m->sender_id || $tmpList->sender_id === $m->receiver_id) {
+        //             $list[] = $m;
+        //         } 
+        //     }
+        // }
+
+        //regarde avce attribut id user connecté
+        $found = false;
+        foreach ($messages as $u) {
+            $tmpList = $u;
+            foreach ($messages as $m) {
+                if($tmpList->receiver_id === $this->request->getAttribute('identity')->id || $tmpList->sender_id === $this->request->getAttribute('identity')->id) {
+                    $list[] = $m;
+                    
+                } 
+               
+            }
+
+
+            // for ($i = 0; $i <= count($list) && !$found ; $i++) {
+            //     if($i === count($list)) {
+            //         $found = true;
+            //     }
+            //         if($list[$i]->receiver_id === $list[$i++]->receiver_id || $list[$i]->sender_id === $list[$i++]->sender_id) {
+            //             $list2[] = $list[$i];
+            //         }
+                
+            // }
+            foreach ($list as $l) {
+                if($l->receiver_id === $this->request->getAttribute('identity')->id || $l->sender_id === $this->request->getAttribute('identity')->id) {
+                    $list2[] = $l;
+                }
+            }
+        }
+
+        $this->set(compact('messages', 'list2'));
     }
 
     /**
@@ -81,30 +128,52 @@ class MessagesController extends AppController
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($id_user)
     {
+        if($id_user == $this->request->getAttribute('identity')->id) {
+            $this->Flash->error(__("Tu ne peux pas t'envoyer un message"));
+            return $this->redirect(['action' => 'index']);
+        }
+
+        $this->loadModel('Users');
+        $user = $this->Users->get($id_user, [
+            'contain' => [],
+        ]);
+
+        $conv = $this->paginate(
+            $this->Messages
+            ->find()
+            ->contain(['Receivers', 'Senders'])
+            ->where([
+                'OR' => [
+                    ['Receivers.id' =>  $id_user],
+                    ['Senders.id' =>  $id_user]
+                ]
+            ])) ;
+        ;
+
         $message = $this->Messages->newEmptyEntity();
         $message->set(['sender_id'=>$this->request->getAttribute('identity')->id]);
+        $message->set(['receiver_id'=>$id_user]);
 
         if ($this->request->is('post')) {
             $message = $this->Messages->patchEntity($message, $this->request->getData());
             if ($this->Messages->save($message)) {
-                $this->Flash->success(__('The message has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'add', $id_user]);
             }
             $this->Flash->error(__('The message could not be saved. Please, try again.'));
         }
-        $users = $this->Messages->Receivers
-            ->find()
-            ->where(['Receivers.id !=' => $this->request->getAttribute('identity')->id]);
+        // $users = $this->Messages->Receivers
+        //     ->find()
+        //     ->where(['Receivers.id !=' => $this->request->getAttribute('identity')->id]);
         
-        $userList = [];
-        foreach ($users as $u) {
-            $userList[$u->id] = $u->pseudo;
-        }
+        // $userList = [];
+        // foreach ($users as $u) {
+        //     $userList[$u->id] = $u->pseudo;
+        // }
 
-        $this->set(compact('message', 'userList'));
+        $this->set(compact('message', 'conv', 'user'));
     }
 
     /**

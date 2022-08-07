@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
-<div class="row users_signup">
+<div class=" users_signup">
     <aside class="column">
         <div class="side-nav">
             <?= $this->Html->link('<span class="arrow-left"></span>', ['controller'=>'Users','action'=>'index'],['class' => 'superclass', 'escape' => false]) ?>

@@ -68,8 +68,6 @@ class CommentsController extends AppController
         if ($this->request->is('post')) {
             $comment = $this->Comments->patchEntity($comment, $this->request->getData());
             if ($this->Comments->save($comment)) {
-                $this->Flash->success(__('The comment has been saved.'));
-
                 return $this->redirect(['controller'=>'Posts','action' => 'view', $id_post]);
             }
             $this->Flash->error(__('The comment could not be saved. Please, try again.'));
@@ -94,8 +92,6 @@ class CommentsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $comment = $this->Comments->patchEntity($comment, $this->request->getData());
             if ($this->Comments->save($comment)) {
-                $this->Flash->success(__('The comment has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The comment could not be saved. Please, try again.'));

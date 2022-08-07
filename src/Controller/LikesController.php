@@ -55,7 +55,6 @@ class LikesController extends AppController
         $like->set(['post_id'=>$post]);
 
         if ($this->Likes->save($like)) {
-            $this->Flash->success(__('The like has been saved.'));
             return $this->redirect(['controller'=>'Posts','action' => 'index']);
         }
         $this->Flash->error(__('The like could not be saved. Please, try again.'));
@@ -76,8 +75,6 @@ class LikesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $like = $this->Likes->patchEntity($like, $this->request->getData());
             if ($this->Likes->save($like)) {
-                $this->Flash->success(__('The like has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The like could not be saved. Please, try again.'));
@@ -99,7 +96,6 @@ class LikesController extends AppController
         // $this->request->allowMethod(['post', 'delete']);
         $like = $this->Likes->get($id);
         if ($this->Likes->delete($like)) {
-            $this->Flash->success(__('The like has been deleted.'));
         } else {
             $this->Flash->error(__('The like could not be deleted. Please, try again.'));
         }

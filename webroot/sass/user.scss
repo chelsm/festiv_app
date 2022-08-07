@@ -1,5 +1,8 @@
 .users-section{
+    margin: 0 auto;
     padding: 20px;
+    width: 90%;
+    color: #004A59;
     // max-height: 100vh;
     // min-height: 85vh;
     // height: 85vh;
@@ -7,6 +10,7 @@
         min-height: 85vh;
     }
     .users{
+        position: relative;
         background: #FFFFFF;
         border-radius: 24px;
         height: 100%;
@@ -14,6 +18,17 @@
         flex-direction: column;
         padding: 40px 10px;
         align-items: center;
+        .logout{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: "Futura LT Pro Bold";
+            color: #393939;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+            letter-spacing: normal;
+        }
         .users-info{
             display: flex;
             flex-direction: column;
@@ -59,8 +74,8 @@
                     figure{
                         display: inline-block;
                         overflow: hidden;
-                        height: 100px; 
-                        width: 100px;
+                        // height: 100px; 
+                        // width: 100px;
                         border-radius: 10px;
                         
                     }
@@ -76,12 +91,19 @@
             letter-spacing: normal;
         } 
         form{
+            font-family: "Alef Regular";
+            font-weight: 700;
             color: #004A59;
             display: flex;
             flex-direction: column;
             padding: 2rem;
             gap: 5vh;
             width: 100%;
+            .input .desc{
+                background: #EFEFEF;
+                border-radius: 14px;
+                height: unset;
+            }
             .users-edit{
                 .input{
                     width: 100%;

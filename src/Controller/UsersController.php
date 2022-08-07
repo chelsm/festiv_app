@@ -167,7 +167,7 @@ class UsersController extends AppController
     }
 
     public function picture($id){
-		if($this->request->getAttribute('identity') == null || empty($id)) {
+		if($this->request->getAttribute('identity') == null || empty($id) || $id != $this->request->getAttribute('identity')->id) {
 			$this->Flash->error('Action interdite');
 			return $this->redirect(['controller' => 'Users','action' => 'index']);
 		}
@@ -179,7 +179,7 @@ class UsersController extends AppController
 		if($this->request->is(['post', 'put'])){
 
 			//si le fichier est vide ou qu'il n'est pas au bon format
-			if(empty($this->request->getData('image')->getClientFilename()) || !in_array($this->request->getData('image')->getClientMediaType(), ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'])){
+			if(empty($this->request->getData('image')->getClientFilename()) || !in_array($this->request->getData('image')->getClientMediaType(), ['image/png', 'image/jpg', 'image/jpeg'])){
 				//message d'erreur
 				$this->Flash->error('L\'image est obligatoire et doit être au format png, jpg ou gif');
 

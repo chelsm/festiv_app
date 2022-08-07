@@ -5,31 +5,28 @@
  * @var string[]|\Cake\Collection\CollectionInterface $users
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $post->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $post->id), 'class' => 'side-nav-item']
-            ) ?>
-            <?= $this->Html->link(__('List Posts'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="posts form content">
+<div class="">
+    <div class="">
+    <div class="column-responsive column-80 users-section">
+        <div class="users form content">
+        <?= $this->Html->link(__('<i class="fa-solid fa-arrow-left fa-arrow-left-back"></i>'), ['controller' => 'Posts','action' => 'view',$post->id],['class' => 'superclass', 'escape' => false])?>
+        <h2 class="title-page">modifier ma publication</h2>
+        <div class="separator"></div>
+
             <?= $this->Form->create($post) ?>
             <fieldset>
-                <legend><?= __('Edit Post') ?></legend>
                 <?php
-                    echo $this->Form->control('content');
-                    echo $this->Form->control('description');
-                    echo $this->Form->control('user_id', ['options' => $users]);
+                    echo $this->Form->control('description', ['class'=>'desc']);
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button('Sauvegarder', ['class'=> 'btnSendData']) ?>
+            <?= $this->Form->postLink(
+                __('Supprimer la publication'),
+                ['action' => 'delete', $post->id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $post->id), 'class' => 'btnDelete']  
+            ) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
+</div>
 </div>

@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
-<div class="row">
+<div class="">
     <!-- <aside class="column"> -->
         <!-- <div class="side-nav"> -->
             <!-- <?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id], ['class' => 'side-nav-item']) ?> -->
@@ -15,6 +15,9 @@
     <!-- </aside> -->
     <div class="column-responsive column-80 users-section">
         <div class="users view content users-view">
+            <?php if ($user->id == $this->request->getAttribute('identity')->id) :?>
+                <?= $this->Html->link(__('Se deconnecter'), ['controller' => 'Users','action' => 'logout'],['class' => 'superclass logout', 'escape' => false])?>
+            <?php endif ?>
             <div  class="users-info">
                 <div  class="users-info-picture">
                     <?php if ( $user->has('photo')) :?>

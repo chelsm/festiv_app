@@ -8,15 +8,15 @@
 ?>
 <div class="comments-section">
     <div class="comments form content">
+        <?= $this->Html->link(__('<i class="fa-solid fa-arrow-left fa-arrow-left-back"></i>'), ['controller' => 'Posts','action' => 'view', $myPost->id],['class' => 'superclass', 'escape' => false])?>
         <h2 class="title-page">commentaires</h2>
         <div class="separator"></div>
-
         <div class="post">
             <div class="user">
                 <div class="users-info-picture mini-users-picture">
                     <?php if ( $myPost->user->has('photo')) :?>
                         <figure>
-                            <img class="user_picture" src='/webroot/img/profils/<?=($s->photo)?>' alt="photo de l'utilisateur" width="100" height="100">
+                            <img class="user_picture" src='/webroot/img/profils/<?=($myPost->user->photo)?>' alt="photo de l'utilisateur" width="100" height="100">
                         </figure>
                     <?php else :?>
                         <figure>

@@ -1,13 +1,16 @@
 .comments-section{
     padding: 20px;
     color: #027184;
+    width: 90%;
+    margin: 0 auto;
     .comments{
+        position: relative;
         background: #FFFFFF;
         border-radius: 24px;
         height: 100%;
         display: flex;
         flex-direction: column;
-        padding: 40px 40px 10px 40px;
+        padding: 15px;
         gap: 10px;
 
         .post{
@@ -32,69 +35,72 @@
                 color: #393939;
             }
         }
-        form{
-            color: #004A59;
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            margin: 15px 0px;
-            fieldset{
-                width: inherit;
-                .input{
-                    width: 100%;
-                }
-                textarea{
-                    min-height: 40px;
-                    line-height: 40px;
-                    max-height: 100px;
-                    resize: none;
-                    margin: 0;
-                    width: 100%;
-                    color: #004A59;
-                    border: none;
-                    background: #EFEFEF;
-                    border-top-left-radius: 10px 10px;
-                    border-bottom-left-radius: 10px 10px;
-                    border-top-right-radius: 0px 0px;
-                    border-bottom-right-radius: 0px 0px;
-                    text-align: start;
-                    &::placeholder {
-                        color: #004A59;
-                        font-family: 'Alef Regular';
-                        font-size: 14px;
-    
-                    }
-                }
-                
-            }
-            button{
-                border: #FFFFFF;
-                // color: #393939;
-                padding: 0 10%;
-                background: #EFEFEF;
-                border-top-left-radius: 0px 0px;
-                border-bottom-left-radius: 0px 0px;
-                border-top-right-radius: 10px 10px;
-                border-bottom-right-radius: 10px 10px;
-                
-            }
-            
-            .fa-paper-plane{
-                background: -webkit-gradient(linear, left top, left bottom, from(rgba(2, 113, 132, 0.49)), to(rgba(199, 54, 24, 0.49)));
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-            }
-            #search{
-                color: #004A59;
-                font-size: 14px;
-                margin: 0px;
-                font-family: 'Alef Regular';
-            }
-        }
+        
     }
     
 }
+form{
+    color: #004A59;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 15px 0px;
+    fieldset{
+        width: inherit;
+        .input{
+            width: 100%;
+        }
+        textarea{
+            min-height: 40px;
+            line-height: 40px;
+            max-height: 100px;
+            resize: none;
+            margin: 0;
+            width: 100%;
+            color: #004A59;
+            border: none;
+            background: #EFEFEF;
+            border-top-left-radius: 10px 10px;
+            border-bottom-left-radius: 10px 10px;
+            border-top-right-radius: 0px 0px;
+            border-bottom-right-radius: 0px 0px;
+            text-align: start;
+            &::placeholder {
+                color: #004A59;
+                font-family: 'Alef Regular';
+                font-size: 14px;
 
+            }
+        }
+        
+    }
+    button{
+        border: #FFFFFF;
+        // color: #393939;
+        padding: 0 10%;
+        background: #EFEFEF;
+        border-top-left-radius: 0px 0px;
+        border-bottom-left-radius: 0px 0px;
+        border-top-right-radius: 10px 10px;
+        border-bottom-right-radius: 10px 10px;
+        &:hover{
+            background: #EFEFEF;
+        }
+        
+    }
+    
+    .fa-paper-plane{
+        background: -webkit-gradient(linear, left top, left bottom, from(rgba(2, 113, 132, 0.49)), to(rgba(199, 54, 24, 0.49)));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    #search{
+        color: #004A59;
+        font-size: 14px;
+        margin: 0px;
+        font-family: 'Alef Regular';
+    }
+}
 .post-descr{
     font-family: "Alef Regular";
     font-weight: 400;

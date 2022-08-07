@@ -5,17 +5,9 @@
  */
 ?>
 <div class="posts">
-    <!-- <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Post'), ['action' => 'edit', $post->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Post'), ['action' => 'delete', $post->id], ['confirm' => __('Are you sure you want to delete # {0}?', $post->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Posts'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Post'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside> -->
     <div class="column-responsive column-80 posts-container">
         <div class=" view content posts-list">
+            <?= $this->Html->link(__('<i class="fa-solid fa-arrow-left fa-arrow-left-back"></i>'), ['controller' => 'Posts','action' => 'index'],['class' => 'superclass', 'escape' => false])?>
             <div class="single-post-view post">
                 <figure>
                     <img class="post_picture" src='/webroot/img/posts/<?=($post->content)?>' alt='<?= h($post->content) ?>' width="100%" height="auto">
@@ -23,20 +15,32 @@
                 <div class="post_info">
                     <span class="post_pseudo"><?= $post->has('user') ? $this->Html->link($post->user->pseudo, ['controller' => 'Users', 'action' => 'view', $post->user->id]) : '' ?></span>
                     <div  class="post_info__action">
-                        <!-- <?= $post ?> -->
+                        <?php $nbcoeur = 0 ?>
                         <?php if ( $post->likes) :?>
+                            <?php 
+                                $coeur = false ;
+                                $nbcoeur = count( $post->likes)
+                            ?>
                             <?php foreach ($post->likes as $like): ?>
                                 <?php if ( $like->user_id === $this->request->getAttribute('identity')->id ) :?>
+                                    <?php $coeur = true ?>
+                                    <?= $nbcoeur ?>
                                     <?= $this->Html->link(__('<i class="fa-solid fa-heart post-liked"></i>'), ['controller' => 'Likes','action' => 'delete',  $like->id],['class' => 'superclass', 'escape' => false])?>
                                 <?php endif ?>
                             <?php endforeach; ?>
-                            <?php if ( $like->user_id !== $this->request->getAttribute('identity')->id ) :?>
+                            <?php if ( $like->user_id !== $this->request->getAttribute('identity')->id && $coeur === false) :?>
+                                <?= $nbcoeur ?>
                                 <?= $this->Html->link(__('<i class="fa-regular fa-heart post-notLiked"></i>'), ['controller' => 'Likes','action' => 'add',  $post->id],['class' => 'superclass', 'escape' => false])?>
                             <?php endif ?>
                         <?php else :?>
+                            <?= $nbcoeur ?>
                             <?= $this->Html->link(__('<i class="fa-regular fa-heart post-notLiked"></i>'), ['controller' => 'Likes','action' => 'add',  $post->id],['class' => 'superclass', 'escape' => false])?>
                         <?php endif ?>
-                        <?= $this->Html->link(__('<i class="fa-solid fa-comment-dots"></i>'), ['controller' => 'Comments','action' => 'add', $post->id ],['class' => 'superclass', 'escape' => false])?>
+                        <?= $this->Html->link(__('<i class="fa-solid fa-comment-dots"></i>'), ['controller' => 'Comments','action' => 'add',  $post->id ],['class' => 'superclass', 'escape' => false])?>
+                        <?php if ( $post->user_id == $this->request->getAttribute('identity')->id) :?>
+                            <?= $this->Html->link(__('<i class="fa-solid fa-pen"></i>'), ['controller' => 'Posts','action' => 'edit',  $post->id ],['class' => 'superclass', 'escape' => false])?>
+                        <?php endif ?>
+                            
                     </div> 
                 </div>
                 <p class="post_description"><?= $post->description?></p>

@@ -19,12 +19,14 @@
         flex-direction: column;
         height: inherit;
         justify-content: space-between;
+        margin: 0;
         .info{
             font-size: 1.5rem;
             font-family: 'Futura LT Pro Bold';
             text-align: center;
         }
         form{
+            margin: 0;
             color: #004A59;
             border-radius: 0px 64px 0px 0px;
             background: rgba(255, 255, 255, 0.66);  

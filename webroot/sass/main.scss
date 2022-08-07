@@ -4,6 +4,7 @@
 @import 'listPost';
 @import 'search';
 @import 'comment';
+@import 'message';
 
 @font-face {
     font-family: 'Futura LT Pro Bold';
@@ -41,15 +42,15 @@ body{
             color: #393939;
         }
         .addPost_icon{
-            position: absolute;
-            width: 70px;
-            height: 70px;
+            // position: absolute;
+            width: 50px;
+            height: 50px;
             background: #F6A278;
             display: flex;
             align-items: center;
-            top: -10%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            // top: -10%;
+            // left: 50%;
+            // transform: translate(-50%, -50%);
             justify-content: center;
             border-radius: 100%;
             i{
@@ -119,6 +120,7 @@ body{
 .mini-users-picture{
     height: 45px;
     width: 45px;
+    display: flex;
     .user_picture{
         height: 100%;
         width: 100%;
@@ -132,6 +134,43 @@ body{
     background: #D9D9D9;
 }
 
-.fa-solid{
+.fa-solid, .fa-regular{
     font-size: 25px;
+}
+
+.fa-arrow-left-back{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    color: #393939;
+}
+
+.btnSendData{
+    border: none;
+    background: rgba(0, 138, 166, 0.42);
+    border-radius: 15px;
+    color: #393939;
+    font-family: "Futura LT Pro Bold";
+    font-size: 12px;
+    margin: 0;
+    text-transform: inherit;
+    display: flex;
+    cursor: pointer;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    &:hover{
+        background: rgba(0, 138, 166, 0.42);
+        color: #fff;
+    }
+}
+.btnDelete{
+    color: #004A59;
+    font-family: "Futura LT Pro Bold";
+    font-size: 12px;
+    &:hover{
+    color: #004A59;
+
+    }
+
 }

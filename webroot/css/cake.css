@@ -70,12 +70,16 @@ figure img {
 }
 
 .users-section {
+  margin: 0 auto;
   padding: 20px;
+  width: 90%;
+  color: #004A59;
 }
 .users-section .users-view {
   min-height: 85vh;
 }
 .users-section .users {
+  position: relative;
   background: #FFFFFF;
   border-radius: 24px;
   height: 100%;
@@ -83,6 +87,17 @@ figure img {
   flex-direction: column;
   padding: 40px 10px;
   align-items: center;
+}
+.users-section .users .logout {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-family: "Futura LT Pro Bold";
+  color: #393939;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: normal;
 }
 .users-section .users .users-info {
   display: flex;
@@ -129,8 +144,6 @@ figure img {
 .users-section .users .users-posts ul li figure {
   display: inline-block;
   overflow: hidden;
-  height: 100px;
-  width: 100px;
   border-radius: 10px;
 }
 .users-section .users .users-edit-title {
@@ -142,12 +155,19 @@ figure img {
   letter-spacing: normal;
 }
 .users-section .users form {
+  font-family: "Alef Regular";
+  font-weight: 700;
   color: #004A59;
   display: flex;
   flex-direction: column;
   padding: 2rem;
   gap: 5vh;
   width: 100%;
+}
+.users-section .users form .input .desc {
+  background: #EFEFEF;
+  border-radius: 14px;
+  height: unset;
 }
 .users-section .users form .users-edit .input {
   width: 100%;
@@ -236,6 +256,7 @@ figure img {
   flex-direction: column;
   height: inherit;
   justify-content: space-between;
+  margin: 0;
 }
 .users_login .users_login_section .info {
   font-size: 1.5rem;
@@ -243,6 +264,7 @@ figure img {
   text-align: center;
 }
 .users_login .users_login_section form {
+  margin: 0;
   color: #004A59;
   border-radius: 0px 64px 0px 0px;
   background: rgba(255, 255, 255, 0.66);
@@ -378,15 +400,17 @@ figure img {
   padding: 15px;
 }
 .posts .posts-container .posts-list {
+  margin: 0 auto;
   display: flex;
   justify-content: center;
+  width: 80%;
   flex-direction: column;
   gap: 25px;
   align-items: center;
   padding-bottom: 90px;
 }
 .posts .posts-container .posts-list .post {
-  color: red;
+  color: #D80000;
   background: #FFFFFF;
   display: inline-block;
   height: auto;
@@ -424,12 +448,15 @@ figure img {
 }
 .posts .posts-container .posts-list .post .post_info .post_info__action {
   display: flex;
+  align-items: center;
   gap: 15px;
+  font-family: "Futura LT Pro Bold";
+  color: #D80000;
 }
 .posts .posts-container .posts-list .post .post_info .post_info__action .post-liked, .posts .posts-container .posts-list .post .post_info .post_info__action .post-notLiked {
   color: #D80000;
 }
-.posts .posts-container .posts-list .post .post_info .post_info__action .fa-comment-dots {
+.posts .posts-container .posts-list .post .post_info .post_info__action .fa-comment-dots, .posts .posts-container .posts-list .post .post_info .post_info__action .fa-pen {
   color: #393939;
 }
 .posts .posts-container .posts-list .post .post_description {
@@ -465,6 +492,8 @@ figure img {
   flex-direction: column;
   gap: 19px;
   color: red;
+  width: 80%;
+  margin: 0 auto;
 }
 .search-section .search form {
   color: #004A59;
@@ -657,14 +686,17 @@ figure img {
 .comments-section {
   padding: 20px;
   color: #027184;
+  width: 90%;
+  margin: 0 auto;
 }
 .comments-section .comments {
+  position: relative;
   background: #FFFFFF;
   border-radius: 24px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 40px 40px 10px 40px;
+  padding: 15px;
   gap: 10px;
 }
 .comments-section .comments .post {
@@ -688,20 +720,21 @@ figure img {
 .comments-section .comments .all-comments .post .user .name-user-comm {
   color: #393939;
 }
-.comments-section .comments form {
+
+form {
   color: #004A59;
   display: flex;
   flex-direction: row;
   width: 100%;
   margin: 15px 0px;
 }
-.comments-section .comments form fieldset {
+form fieldset {
   width: inherit;
 }
-.comments-section .comments form fieldset .input {
+form fieldset .input {
   width: 100%;
 }
-.comments-section .comments form fieldset textarea {
+form fieldset textarea {
   min-height: 40px;
   line-height: 40px;
   max-height: 100px;
@@ -717,12 +750,12 @@ figure img {
   border-bottom-right-radius: 0px 0px;
   text-align: start;
 }
-.comments-section .comments form fieldset textarea::placeholder {
+form fieldset textarea::placeholder {
   color: #004A59;
   font-family: "Alef Regular";
   font-size: 14px;
 }
-.comments-section .comments form button {
+form button {
   border: #FFFFFF;
   padding: 0 10%;
   background: #EFEFEF;
@@ -731,12 +764,15 @@ figure img {
   border-top-right-radius: 10px 10px;
   border-bottom-right-radius: 10px 10px;
 }
-.comments-section .comments form .fa-paper-plane {
+form button:hover {
+  background: #EFEFEF;
+}
+form .fa-paper-plane {
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(2, 113, 132, 0.49)), to(rgba(199, 54, 24, 0.49)));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.comments-section .comments form #search {
+form #search {
   color: #004A59;
   font-size: 14px;
   margin: 0px;
@@ -749,6 +785,52 @@ figure img {
   font-size: 14px;
   color: #393939;
   text-align: left;
+}
+
+.messages-section {
+  padding: 20px;
+  color: #027184;
+}
+.messages-section .messages {
+  background: #FFFFFF;
+  border-radius: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 40px 10px 40px;
+  gap: 10px;
+}
+.messages-section .messages ul li {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+.messages-section .messages ul li a {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.messages-section .messages .messages-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: inherit;
+}
+.messages-section .messages .messages-content .content-message {
+  padding: 10px;
+  color: #393939;
+  border-radius: 15px;
+  width: fit-content;
+}
+.messages-section .messages .messages-content .right {
+  background: rgba(0, 138, 166, 0.42);
+  border: solid 1px rgba(0, 138, 166, 0.42);
+  margin-right: 0px;
+  margin-left: auto;
+}
+.messages-section .messages .messages-content .left {
+  background: #FFFFFF;
+  border: 1px solid #CDCDCD;
 }
 
 @font-face {
@@ -790,15 +872,11 @@ body {
   color: #393939;
 }
 .nav .nav-links .addPost_icon {
-  position: absolute;
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   background: #F6A278;
   display: flex;
   align-items: center;
-  top: -10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   justify-content: center;
   border-radius: 100%;
 }
@@ -862,6 +940,7 @@ body {
 .mini-users-picture {
   height: 45px;
   width: 45px;
+  display: flex;
 }
 .mini-users-picture .user_picture {
   height: 100%;
@@ -875,8 +954,44 @@ body {
   background: #D9D9D9;
 }
 
-.fa-solid {
+.fa-solid, .fa-regular {
   font-size: 25px;
+}
+
+.fa-arrow-left-back {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  color: #393939;
+}
+
+.btnSendData {
+  border: none;
+  background: rgba(0, 138, 166, 0.42);
+  border-radius: 15px;
+  color: #393939;
+  font-family: "Futura LT Pro Bold";
+  font-size: 12px;
+  margin: 0;
+  text-transform: inherit;
+  display: flex;
+  cursor: pointer;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.btnSendData:hover {
+  background: rgba(0, 138, 166, 0.42);
+  color: #fff;
+}
+
+.btnDelete {
+  color: #004A59;
+  font-family: "Futura LT Pro Bold";
+  font-size: 12px;
+}
+.btnDelete:hover {
+  color: #004A59;
 }
 
 /*# sourceMappingURL=cake.css.map */
