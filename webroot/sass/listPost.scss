@@ -29,6 +29,22 @@
                     flex-direction: column;
                     gap: 10px;
                 }
+                a figure{
+                    overflow: hidden;
+                    background-color: #fafafa;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    max-height: 80vh;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        max-width: 100%;
+                        min-height: 200px;
+                        object-fit: cover;
+                      }
+
+                }
 
                 .post_picture{
                     width: 100%;

@@ -142,9 +142,20 @@ figure img {
   margin: 0px;
 }
 .users-section .users .users-posts ul li figure {
-  display: inline-block;
   overflow: hidden;
+  background-color: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 80vh;
   border-radius: 10px;
+}
+.users-section .users .users-posts ul li figure img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  min-height: 200px;
+  object-fit: cover;
 }
 .users-section .users .users-edit-title {
   font-family: "Futura LT Pro Bold";
@@ -428,6 +439,21 @@ figure img {
   flex-direction: column;
   gap: 10px;
 }
+.posts .posts-container .posts-list .post a figure {
+  overflow: hidden;
+  background-color: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 80vh;
+}
+.posts .posts-container .posts-list .post a figure img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  min-height: 200px;
+  object-fit: cover;
+}
 .posts .posts-container .posts-list .post .post_picture {
   width: 100%;
   height: auto;
@@ -592,8 +618,19 @@ figure img {
   background: linear-gradient(white, white) padding-box, linear-gradient(to right, rgba(2, 113, 132, 0.49), rgba(199, 54, 24, 0.49)) border-box;
 }
 .search-section .search .search-users-posts ul li figure .user_picture {
-  height: 100%;
+  overflow: hidden;
+  background-color: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 80vh;
+}
+.search-section .search .search-users-posts ul li figure .user_picture img {
   width: 100%;
+  height: 100%;
+  max-width: 100%;
+  min-height: 200px;
+  object-fit: cover;
 }
 .search-section .search .search-users-posts ul li .nb-like {
   background-color: #FFFFFF;

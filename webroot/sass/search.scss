@@ -125,8 +125,19 @@
                     border: 2px solid transparent;
                     background: linear-gradient(white, white) padding-box, linear-gradient(to right, rgba(2, 113, 132, 0.49), rgba(199, 54, 24, 0.49)) border-box;
                     figure .user_picture{
-                        height: 100%;
-                        width: 100%;
+                        overflow: hidden;
+                        background-color: #fafafa;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        max-height: 80vh;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            max-width: 100%;
+                            min-height: 200px;
+                            object-fit: cover;
+                          }
                     }
                     .nb-like{
                         background-color: #FFFFFF;

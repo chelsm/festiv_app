@@ -20,12 +20,13 @@
                 ?>
             </fieldset>
             <?= $this->Form->button('Sauvegarder', ['class'=> 'btnSendData']) ?>
+           
+            <?= $this->Form->end() ?>
             <?= $this->Form->postLink(
                 __('Supprimer la publication'),
                 ['action' => 'delete', $post->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $post->id), 'class' => 'btnDelete']  
+                ['confirm' => __('Es tu sur de vouloir supprimer cette publication', $post->id), 'class' => 'side-nav-item btnDelete']
             ) ?>
-            <?= $this->Form->end() ?>
         </div>
     </div>
 </div>

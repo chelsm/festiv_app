@@ -55,9 +55,13 @@ class PostsTable extends Table
         ]);
         $this->hasMany('Comments', [
             'foreignKey' => 'post_id',
+            'dependent' => true,
+            'cascadeCallbacks' => true
         ]);
         $this->hasMany('Likes', [
             'foreignKey' => 'post_id',
+            'dependent' => true,
+            'cascadeCallbacks' => true
         ]);
     }
 
