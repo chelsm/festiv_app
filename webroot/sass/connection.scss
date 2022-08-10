@@ -3,6 +3,8 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 310px;
+    margin: 0 auto;
     .title{
         font-size: 2.5rem;
         font-family: "Futura LT Pro Bold";
@@ -19,16 +21,17 @@
         flex-direction: column;
         height: inherit;
         justify-content: space-between;
+        gap: 10px;
         margin: 0;
         .info{
-            font-size: 1.5rem;
+            font-size: 1rem;
             font-family: 'Futura LT Pro Bold';
             text-align: center;
         }
         form{
             margin: 0;
             color: #004A59;
-            border-radius: 0px 64px 0px 0px;
+            border-radius: 40px 40px 0px 0px;
             background: rgba(255, 255, 255, 0.66);  
             display: flex;
             flex-direction: column;
@@ -68,6 +71,7 @@
                 }
             }
             .goToSignup{
+                text-align: center;
                 span{
                     font-family: 'Alef Regular';
                     font-weight: 400;
@@ -83,16 +87,17 @@
 }
 
 .users_signup{
+    width: 400px;
+    margin: 0 auto;
     .column {
-        height: 232px;
         background: rgba(255, 255, 255, 0.66);
-        border-radius: 0px 0px 0px 64px;
-        padding: 49px;
+        border-radius: 0px 0px 40px 40px;
+        padding: 10px 30px;
         .side-nav{
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 50px;
+            gap: 25px;
             .arrow-left{
                 background: url('../img/app_design/icons/arrow_left.svg') no-repeat;
                 height: 22px;
@@ -115,6 +120,7 @@
             padding: 2rem;
             gap: 5vh;
             input{
+                margin: 0;
                 color: #FFFFFF;
                 border: none;
                 border-bottom: solid #FFFFFF;
@@ -128,7 +134,7 @@
 
                 }
             }
-            #firstname, #lastname, #pseudo, #password, #email, #password{
+            #firstname, #lastname, #pseudo, #password, #email, #password , #festival{
                 color: #FFFFFF;
                 font-size: 14px;
                 font-family: 'Alef Regular';
@@ -166,5 +172,13 @@
                 color: #fff;
             }
         }
+    }
+}
+
+label{
+    font-size: 14px;
+    font-family: "Alef Regular";
+    #text{
+        margin: 10px
     }
 }

@@ -47,7 +47,8 @@ class PostsController extends AppController
     {
         $post = $this->Posts->get($id, [
             'contain' => ['Users', 'Comments', 'Comments.Users', 'Likes'],
-            'limit' => 5
+            'limit' => 5,
+
         ]);
         
         $this->set(compact('post'));
@@ -62,7 +63,7 @@ class PostsController extends AppController
     {
         if($this->request->getAttribute('identity') == null ) {
 			$this->Flash->error('Veuillez vous connecter avant de poster');
-			return $this->redirect(['controller' => 'Users','action' => 'index']);
+			return $this->redirect(['controller' => 'Users','action' => 'login']);
 		}
 
         $post = $this->Posts->newEmptyEntity();
@@ -119,7 +120,7 @@ class PostsController extends AppController
     {
 
         if($id == null) {
-			return $this->redirect(['controller' => 'Users','action' => 'index']);
+			return $this->redirect(['controller' => 'Users','action' => 'login']);
 		}
         $post = $this->Posts->get($id, [
             'contain' => [],

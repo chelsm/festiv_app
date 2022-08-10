@@ -60,10 +60,6 @@ class CommentsController extends AppController
         ]);
 
         $this->loadModel('Users');
-        // $usersComment = $this->Users->find('all')
-        //     ->contain(['Comments'])
-        //     ->toArray()
-        // ;
 
         if ($this->request->is('post')) {
             $comment = $this->Comments->patchEntity($comment, $this->request->getData());
@@ -72,8 +68,6 @@ class CommentsController extends AppController
             }
             $this->Flash->error(__('The comment could not be saved. Please, try again.'));
         }
-        // $users = $this->Comments->Users->find('list', ['limit' => 200])->all();
-        // $posts = $this->Comments->Posts->find('list', ['limit' => 200])->all();
         $this->set(compact('comment', 'myPost'));
     }
 

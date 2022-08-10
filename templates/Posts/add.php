@@ -13,7 +13,7 @@
             <?= $this->Form->create($post, ['enctype' => 'multipart/form-data'])  ?>
             <fieldset>
                 <?php
-                    echo $this->Form->control('content', ['label' => 'Ajouter un image / video', 'type' => 'file']);
+                    echo $this->Form->control('content', ['label' => 'Ajouter une image', 'type' => 'file']);
                     echo $this->Form->control('description', ['class'=>'desc']);
                 ?>
             </fieldset>

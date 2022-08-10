@@ -25,7 +25,7 @@
             <?= $this->Form->postLink(
                 __('Supprimer la publication'),
                 ['action' => 'delete', $post->id],
-                ['confirm' => __('Es tu sur de vouloir supprimer cette publication', $post->id), 'class' => 'side-nav-item btnDelete']
+                ['confirm' => __('Es tu sûr de vouloir supprimer cette publication', $post->id), 'class' => 'side-nav-item btnDelete']
             ) ?>
         </div>
     </div>

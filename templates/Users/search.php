@@ -18,7 +18,6 @@
             <ul>
             <?php foreach ($randUsers as $randU): ?>
                 <li>
-                    <!-- <h3><?= h($randU) ?></h3> -->
                     <?= $this->Html->link(__($randU->pseudo), ['controller' => 'Users','action' => 'view',  $randU->id])?>
                 </li>
             <?php endforeach; ?>
@@ -30,21 +29,16 @@
             <ul>
             <?php foreach ($topFivePost as $post): ?>
                 <li>
-                <?php $post_name =  $post->post->content ?>
-                <?= $this->Html->link(__("
-                            <figure>
-                                <img class='user_post' src='/webroot/img/posts/$post_name' alt='post de utilisateur' width='100%' height='100%'>
-                            </figure>
-                        "), ['controller' => 'Posts', 'action' => 'view', $post->post_id],['class' => 'superclass', 'escape' => false]) ?>
-                    <!-- <figure>
-                        <img class="user_picture" src='/webroot/img/posts/<?=($post->post->content)?>' alt="photo de l'utilisateur" width="100" height="100">
-                    </figure> -->
+                    <?php $post_name =  $post->post->content ?>
+                    <?= $this->Html->link(__("
+                        <figure>
+                            <img class='user_post' src='/webroot/img/posts/$post_name' alt='post de utilisateur' width='100%' height='100%'>
+                        </figure>
+                    "), ['controller' => 'Posts', 'action' => 'view', $post->post_id],['class' => 'superclass', 'escape' => false]) ?>
                     <span class="nb-like">  
                         <?= $post->nb?>
                         <i class="fa-solid fa-heart"></i>
-                        
                     </span>
-
                 </li>
             <?php endforeach; ?>
             </ul>

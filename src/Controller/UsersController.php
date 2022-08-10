@@ -15,8 +15,6 @@ class UsersController extends AppController
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
         parent::beforeFilter($event);
-        // Configurez l'action de connexion pour ne pas exiger d'authentification,
-        // évitant ainsi le problème de la boucle de redirection infinie
         $this->Authentication->addUnauthenticatedActions(['login', 'add']);
 
     }
@@ -52,9 +50,7 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $users = $this->paginate($this->Users);
-
-        $this->set(compact('users'));
+        return $this->redirect(['controller'=> 'Posts','action' => 'index']);
     }
 
     /**
@@ -91,24 +87,6 @@ class UsersController extends AppController
             $this->Flash->error(__('La création de compte a échoué. Veuillez réessayer.'));
         }
         $this->set(compact('user'));
-    }
-
-    /**
-     * Conversation method
-     *
-     * @param string|null $id User id.
-     * @return \Cake\Http\Response|null|void Renders view
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function conversation($id = null)
-    {
-        $user = $this->Users->get($id, [
-            'contain' => [],
-        ]);
-        $id_user = $this->request->getAttribute('identity')->id;
-        // $message = $this->Users->Messages->find();
-
-        $this->set(compact('id_user'));
     }
 
 
@@ -175,47 +153,26 @@ class UsersController extends AppController
 
 		$a = $this->Users->get($id);
 
-		//si on arecu le form
 		if($this->request->is(['post', 'put'])){
 
-			//si le fichier est vide ou qu'il n'est pas au bon format
-			if(empty($this->request->getData('image')->getClientFilename()) || !in_array($this->request->getData('image')->getClientMediaType(), ['image/png', 'image/jpg', 'image/jpeg'])){
-				//message d'erreur
-				$this->Flash->error('L\'image est obligatoire et doit être au format png, jpg ou gif');
+			if(empty($this->request->getData('image')->getClientFilename()) || !in_array($this->request->getData('image')->getClientMediaType(), ['image/png', 'image/jpg', 'image/jpeg', 'image/webp'])){
+				$this->Flash->error('L\'image est obligatoire et doit être au format png, jpg ou webp');
 
-			}else{ //sinon
-
-				//on recup l'extention
+			}else{ 
 				$ext = pathinfo($this->request->getData('image')->getClientFilename(), PATHINFO_EXTENSION);
-
-				//on cree le nouveau nom
 				$name = 'user-'.$id.'-'.time().'.'.$ext;
-
-				//on sauve l'ancien nom
 				$oldname = $a->photo;
-
-				//on place ce nouveau nom dans l'entité (dans la colonne 'picture')
 				$a->photo = $name;
-
-				//on sauvegarde l'entité
 				if($this->Users->save($a)){
-
-					//si l'ancien fichier existe, on le supprime
 					if(!empty($oldname) && file_exists(WWW_ROOT.'img/profils/'.$oldname)){
 						unlink(WWW_ROOT.'img/profils/'.$oldname);
 					}
-
-					//on déplace le fichier
 					$this->request->getData('image')->moveTo(WWW_ROOT.'img/profils/'.$name);
-
-					//message success
 					$this->Flash->success('Image ajoutée');
-
-					//redirection vers fiche artiste
 					return $this->redirect(['action' => 'view', $id]);
 				}
 				$this->Flash->error('Sauvegarde impossible');
-			}//fin sinon
+			}
 		}
 		$this->set(compact('a'));
 

@@ -5,17 +5,6 @@
  */
 ?>
 <div class="">
-    <!-- <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $user->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'side-nav-item']
-            ) ?>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside> -->
     <div class="column-responsive column-80 users-section">
         <div class="users form content">
             <?= $this->Html->link(__('<i class="fa-solid fa-arrow-left fa-arrow-left-back"></i>'), ['controller' => 'Users','action' => 'view',$this->request->getAttribute('identity')->id],['class' => 'superclass', 'escape' => false])?>
@@ -60,6 +49,10 @@
                     ; 
                     echo $this->Form->control('email', [
                         "placeholder"=>"email",
+                    ])
+                    ; 
+                    echo $this->Form->control('password', [
+                        "placeholder"=>"password",
                     ])
                     ; 
 

@@ -18,9 +18,11 @@
                 <?= $this->Form->create($user) ?>
                 <fieldset>
                     <?php
+                        
                         echo $this->Form->control('festival', [
+                            "label"=>"Cochez si vous êtes gérant de festival",
                             "placeholder"=>"festival",
-                            "label"=>false,
+                            "class" => "gerant-fest"
                             ])
                         ;
                         echo $this->Form->control('firstname', [

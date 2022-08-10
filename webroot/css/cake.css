@@ -82,6 +82,8 @@ figure img {
   position: relative;
   background: #FFFFFF;
   border-radius: 24px;
+  width: 310px;
+  margin: 0 auto;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -154,7 +156,7 @@ figure img {
   width: 100%;
   height: 100%;
   max-width: 100%;
-  min-height: 200px;
+  height: 103px;
   object-fit: cover;
 }
 .users-section .users .users-edit-title {
@@ -179,6 +181,7 @@ figure img {
   background: #EFEFEF;
   border-radius: 14px;
   height: unset;
+  width: fit-content;
 }
 .users-section .users form .users-edit .input {
   width: 100%;
@@ -192,13 +195,14 @@ figure img {
   letter-spacing: normal;
 }
 .users-section .users form .users-edit input, .users-section .users form .users-edit textarea {
-  width: 100%;
+  width: fit-content;
   color: #004A59;
   border: none;
   border-bottom: solid #004A59;
   border-radius: 0;
   text-align: start;
   padding: 0;
+  width: 100%;
 }
 .users-section .users form .users-edit input label, .users-section .users form .users-edit textarea label {
   font-family: "Futura LT Pro Bold";
@@ -245,11 +249,22 @@ figure img {
   margin: 0px;
 }
 
+.users-info-perso {
+  display: flex;
+  gap: 15px;
+  color: #004A59;
+  font-family: "Alef Regular";
+  font-weight: 700;
+  font-size: 15px;
+}
+
 .users_login {
   color: #fff;
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 310px;
+  margin: 0 auto;
 }
 .users_login .title {
   font-size: 2.5rem;
@@ -267,17 +282,18 @@ figure img {
   flex-direction: column;
   height: inherit;
   justify-content: space-between;
+  gap: 10px;
   margin: 0;
 }
 .users_login .users_login_section .info {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-family: "Futura LT Pro Bold";
   text-align: center;
 }
 .users_login .users_login_section form {
   margin: 0;
   color: #004A59;
-  border-radius: 0px 64px 0px 0px;
+  border-radius: 40px 40px 0px 0px;
   background: rgba(255, 255, 255, 0.66);
   display: flex;
   flex-direction: column;
@@ -316,6 +332,9 @@ figure img {
   background: #fff;
   color: #004A59;
 }
+.users_login .users_login_section form .goToSignup {
+  text-align: center;
+}
 .users_login .users_login_section form .goToSignup span {
   font-family: "Alef Regular";
   font-weight: 400;
@@ -326,17 +345,20 @@ figure img {
   color: #004A59;
 }
 
+.users_signup {
+  width: 400px;
+  margin: 0 auto;
+}
 .users_signup .column {
-  height: 232px;
   background: rgba(255, 255, 255, 0.66);
-  border-radius: 0px 0px 0px 64px;
-  padding: 49px;
+  border-radius: 0px 0px 40px 40px;
+  padding: 10px 30px;
 }
 .users_signup .column .side-nav {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 50px;
+  gap: 25px;
 }
 .users_signup .column .side-nav .arrow-left {
   background: url("../img/app_design/icons/arrow_left.svg") no-repeat;
@@ -357,6 +379,7 @@ figure img {
   gap: 5vh;
 }
 .users_signup .users_add_section form input {
+  margin: 0;
   color: #FFFFFF;
   border: none;
   border-bottom: solid #FFFFFF;
@@ -369,7 +392,7 @@ figure img {
   font-family: "Alef Regular";
   font-size: 14px;
 }
-.users_signup .users_add_section form #firstname, .users_signup .users_add_section form #lastname, .users_signup .users_add_section form #pseudo, .users_signup .users_add_section form #password, .users_signup .users_add_section form #email, .users_signup .users_add_section form #password {
+.users_signup .users_add_section form #firstname, .users_signup .users_add_section form #lastname, .users_signup .users_add_section form #pseudo, .users_signup .users_add_section form #password, .users_signup .users_add_section form #email, .users_signup .users_add_section form #password, .users_signup .users_add_section form #festival {
   color: #FFFFFF;
   font-size: 14px;
   font-family: "Alef Regular";
@@ -407,6 +430,14 @@ figure img {
   color: #fff;
 }
 
+label {
+  font-size: 14px;
+  font-family: "Alef Regular";
+}
+label #text {
+  margin: 10px;
+}
+
 .posts {
   padding: 15px;
 }
@@ -425,6 +456,7 @@ figure img {
   background: #FFFFFF;
   display: inline-block;
   height: auto;
+  width: 310px;
   border-radius: 24px;
   text-align: center;
   position: relative;
@@ -598,7 +630,8 @@ figure img {
   gap: 10px;
 }
 .search-section .search .search-users-posts ul {
-  width: 100%;
+  width: 310px;
+  margin: 0 auto;
   display: flex;
   gap: 10px;
   justify-items: center;
@@ -737,6 +770,7 @@ figure img {
   gap: 10px;
 }
 .comments-section .comments .post {
+  width: 310px;
   gap: 10px;
   display: flex;
   flex-direction: column;
@@ -763,7 +797,6 @@ form {
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin: 15px 0px;
 }
 form fieldset {
   width: inherit;
@@ -773,7 +806,7 @@ form fieldset .input {
 }
 form fieldset textarea {
   min-height: 40px;
-  line-height: 40px;
+  line-height: normal;
   max-height: 100px;
   resize: none;
   margin: 0;
@@ -822,6 +855,10 @@ form #search {
   font-size: 14px;
   color: #393939;
   text-align: left;
+}
+
+.add-comments-section {
+  width: 100%;
 }
 
 .messages-section {

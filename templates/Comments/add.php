@@ -64,6 +64,7 @@
                 echo $this->Form->control('content', [
                     "placeholder"=>"Ajouter un commentaire ... ",
                     "label"=>false,
+                    "class"=>"add-comments-section"
                     ])
                 ;
             ?>

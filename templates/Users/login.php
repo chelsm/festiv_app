@@ -2,7 +2,7 @@
     <h1 class='title'>Festiv<br>app</h1>
     <section  class=" users_login_section">
 
-    <span  class='info'>commence une nouvelle aventure festivale . </span>
+    <span  class='info'>commence une nouvelle aventure avec des festivaliers </span>
     <?= $this->Form->create() ?>
     <fieldset>
         <?= $this->Form->control('pseudo', [
