@@ -11,6 +11,8 @@
             <h2 class="title-page">Publier un contenu</h2>
             <div class="separator"></div>
             <?= $this->Form->create($post, ['enctype' => 'multipart/form-data'])  ?>
+            <p>Veuillez ajouter un contenue faisant moins de 2Mb</p>
+
             <fieldset>
                 <?php echo $this->Form->control('content', ['label' => 'Ajouter une image', 'type' => 'file', 'class'=>'inputImgPost']);?>
                 <div class="img-prev"></div>

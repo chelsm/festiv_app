@@ -18,19 +18,11 @@ class PostsController extends AppController
      */
     public function index()
     {
-        // $this->paginate = [
-        //     'contain' => ['Users'],
-        // ];
-        
-        // $posts = $this->paginate($this->Posts);
-
-
         $posts= $this->paginate(
             $this->Posts
             ->find()
             ->contain(['Users', 'Comments', 'Likes'])
             ->order(['Posts.created'=>'DESC'])
-
         );
         $this->set(['posts'=> $posts]);
 
@@ -72,7 +64,7 @@ class PostsController extends AppController
 
         if ($this->request->is('post' , 'put')) {
 
-            if(empty($this->request->getData('content')->getClientFilename()) || !in_array($this->request->getData('content')->getClientMediaType(), ['gif','image/png', 'image/jpg', 'image/jpeg', 'image/gif', 'image/mp4'])){
+            if(empty($this->request->getData('content')->getClientFilename()) || !in_array($this->request->getData('content')->getClientMediaType(), ['gif','image/png', 'image/jpg', 'image/jpeg', 'image/gif'])){
 				$this->Flash->error('Format pas compatible');
 			}else{
                 $post = $this->Posts->patchEntity($post, $this->request->getData());
@@ -88,9 +80,6 @@ class PostsController extends AppController
 					}
 					$this->request->getData('content')->moveTo(WWW_ROOT.'img/posts/'.$newImgName);
 
-					// $this->Flash->success('Image ajoutée');
-                    // $this->Flash->success(__('The post has been saved.'));
-    
                     return $this->redirect(['action' => 'index']);
                 }
                 else{
@@ -101,11 +90,9 @@ class PostsController extends AppController
 
             
             
-            $this->Flash->error(__('The post could not be saved. Please, try again.'));
+            $this->Flash->error(__("Le poste n'a pas pu être sauvegardé. Veuillez réessayer. ( Max : 2Mb )"));
         }
 
-        // $users = $this->Posts->Users->find('list', ['limit' => 200])->all();
-        // $this->set(compact('post', 'users', 'myUser'));
         $this->set(compact('post'));
     }
 
