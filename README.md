@@ -8,6 +8,24 @@ A skeleton for creating applications with [CakePHP](https://cakephp.org) 4.x.
 
 The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
 
+## Tester l'application
+
+cloner le repo
+```bash
+git clone https://github.com/chelsm/festiv_app.git
+```
+
+Ne pas oublier les depenses
+```bash
+composer install
+```
+```bash
+npm i
+```
+
+modifier le fichier app_local.php qui se trouve dans config/app_local.php
+modifier les données dans Datasouces en mettant bien ma base de données, nommée chelsey_festiv_app.sql , que vous pouvez télécharger et qui se trouve à la racine du projet
+
 ## Installation
 
 1. Download [Composer](https://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
