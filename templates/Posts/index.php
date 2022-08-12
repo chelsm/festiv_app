@@ -39,7 +39,6 @@
                                 <span class="nbcoeur-<?= $post->id ?>"><?= $nbcoeur ?></span>
                                 <?php if ( $postIsLiked == true) :?>
                                     <i id ="<?= $post->id ?>" class="fa-solid fa-heart like_trigger post-liked-<?=$post->id?>"></i>
-                                    <!-- <?= $this->Html->link(__('<i class="fa-solid fa-heart post-liked"></i>'), ['controller' => 'Likes','action' => 'delete',  $like->id],['class' => 'superclass', 'escape' => false])?> -->
                                 <?php else :?>
                                     <i id ="<?= $post->id ?>"class="fa-regular fa-heart like_trigger post-notLiked-<?=$post->id?>"></i>
                                 <?php endif ?>
