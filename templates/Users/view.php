@@ -31,20 +31,21 @@
                 <p class="users-info-description">
                     <?= h($user->description); ?>
                 </p>
+                <div  class="users-info-perso">
+                    <span>
+                        <?= h(count($user->posts)) ?>
+                        publications
+                    </span>
+                    <span>
+                        <?php if ($user->festival == 1 ) : ?>
+                            Gérant d'un festival
+                        <?php else :?>
+                            Festivalier
+                        <?php endif ?>
+                    </span>
+                </div>
             </div>
-            <div  class="users-info-perso">
-                <span>
-                    <?= h(count($user->posts)) ?>
-                    publications
-                </span>
-                <span>
-                    <?php if ($user->festival == 1 ) : ?>
-                        Gérant d'un festival
-                    <?php else :?>
-                        Festivalier
-                    <?php endif ?>
-                </span>
-            </div>
+           
 
             <div class="separator"></div>
 

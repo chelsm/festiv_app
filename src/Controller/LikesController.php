@@ -55,9 +55,17 @@ class LikesController extends AppController
         $like->set(['post_id'=>$post]);
 
         if ($this->Likes->save($like)) {
-            return $this->redirect(['controller'=>'Posts','action' => 'index']);
+            // return $this->redirect(['controller'=>'Posts','action' => 'index']);
+            $this->response = $this->response->withStringBody(json_encode(['success'=>true]));
+            $this->response= $this->response->withType('json');
+            return $this->response;
         }
-        $this->Flash->error(__('The like could not be saved. Please, try again.'));
+        // $this->Flash->error(__('The like could not be saved. Please, try again.'));
+        $this->response = $this->response->withStringBody(json_encode(['success'=>false]));
+        $this->response= $this->response->withType('json');
+        return $this->response;
+
+        
     }
 
     /**
@@ -91,15 +99,35 @@ class LikesController extends AppController
      * @return \Cake\Http\Response|null|void Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete($id = null)
+    public function delete($post = null)
     {
         // $this->request->allowMethod(['post', 'delete']);
-        $like = $this->Likes->get($id);
-        if ($this->Likes->delete($like)) {
-        } else {
-            $this->Flash->error(__('The like could not be deleted. Please, try again.'));
-        }
+        // $like = $this->Likes->get($post);
 
-        return $this->redirect(['controller' =>'Posts', 'action' => 'index']);
+        $like = $this->Likes
+            ->find()
+            ->where(
+                ['post_id' => $post], 
+                ['user_id' => $this->request->getAttribute('identity')->id],
+            )->first();
+        ;
+
+        if ($this->Likes->delete($like)) {
+            // return $this->redirect(['controller'=>'Posts','action' => 'index']);
+            $this->response = $this->response->withStringBody(json_encode(['success'=>true]));
+            $this->response= $this->response->withType('json');
+            return $this->response;
+        }
+        // $this->Flash->error(__('The like could not be saved. Please, try again.'));
+        $this->response = $this->response->withStringBody(json_encode(['success'=>false]));
+        $this->response= $this->response->withType('json');
+        return $this->response;
+
+        // if ($this->Likes->delete($like)) {
+        // } else {
+        //     $this->Flash->error(__('The like could not be deleted. Please, try again.'));
+        // }
+
+        // return $this->redirect(['controller' =>'Posts', 'action' => 'index']);
     }
 }

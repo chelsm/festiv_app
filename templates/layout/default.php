@@ -24,22 +24,38 @@ $cakeDescription = "Festiv'App";
     <title>
         <?= $cakeDescription ?>
     </title>
-    <!-- <?= $this->Html->meta('icon') ?> -->
-
     <meta charset="UTF-8">
     <meta name="description" content="Festiv'App : l'application destinée  aux passionnés de festivals !">
     <meta name="author" content="Chelsey Millo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/webroot/img/favicon.ico" />
+    <link rel="icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/logo-192.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
 
     <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'all.min']) ?>
+    <?= $this->Html->script(['index']) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('webfonts') ?>
     <?= $this->fetch('script') ?>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            console.log('je suis dans le service worker');
+            navigator.serviceWorker.register('/sw.js');
+        }
+    </script>
+
+    <script>
+        const csrfToken = "<?= h($this->request->getAttribute('csrfToken')); ?>";
+    </script>
 </head>
 <body 
     <?= str_contains($_SERVER[ 'REQUEST_URI' ],'/users/login') || str_contains($_SERVER[ 'REQUEST_URI' ],'/users/add')? 
