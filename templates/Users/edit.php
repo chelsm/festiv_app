@@ -58,6 +58,7 @@
 
                 ?>
             </fieldset>
+            <?= $this->Flash->render() ?>
             <?= $this->Form->button('Sauvegarder', ['class'=> 'btnSendData']) ?>
             <?= $this->Form->end() ?>
         </div>

@@ -115,10 +115,16 @@
                 border-radius: 14px;
                 height: unset;
                 width: fit-content;
+                margin: 5px 0;
+
             }
             .users-edit{
                 .input{
                     width: 100%;
+                    .file{
+                    margin: 5px 0;
+
+                    }
                     label{
                         font-family: "Futura LT Pro Bold";
                         font-size: 16px;

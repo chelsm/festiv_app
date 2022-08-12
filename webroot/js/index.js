@@ -22,8 +22,6 @@ async function like(item) {
             iconNotLike.classList.add("unlike_trigger");
             iconNotLike.classList.remove("like_trigger");
 
-           
-
             iconNotLike.classList.add("fa-solid");
             iconNotLike.classList.remove("fa-regular");
 
@@ -59,7 +57,6 @@ async function unlike(item) {
          let json = await res.json();
  
          if (json.success) {
-            console.log('oui je suis un success')
              let iconNotLike = document.querySelector(".post-liked-"+id);
              
              iconNotLike.classList.remove("fa-solid");
@@ -79,39 +76,28 @@ async function unlike(item) {
  }
 
 window.onload = function () {
-
-    console.log('navigator', navigator)
-    console.log('window.isSecureContext', window.isSecureContext)
-
     let userLike_trigger = document.querySelectorAll(
         ".like_trigger"
     );
+
     userLike_trigger.forEach(function (element) {
         element.addEventListener("click", function (e) {
             e.preventDefault();
-            console.log('je veux liker')
-            like(this);
-            userLike_trigger==null;
+            if (element.classList.contains("fa-regular")) {
+                like(this);
+            } else {
+                unlike(this);
+            }
 
         });
     });
 
-
-    const userUnLike_trigger = document.querySelectorAll(
-        ".unlike_trigger"
-    );
-    userUnLike_trigger.forEach(function (element) {
-        element.addEventListener("click", function (e) {
-            e.preventDefault();
-            console.log('je veux supp le liker')
-
-            unlike(this);
-            userUnLike_trigger==null;
-
-
+    var imgPrev = document.querySelector('.img-prev');
+    if(imgPrev != null) {
+        document.querySelector('.input.file input').addEventListener('change', e => {
+            imgPrev.style.height = 200 + 'px';
+            imgPrev.style.backgroundImage = 'url(' + URL.createObjectURL(e.target.files[0]) + ')';
         });
-    });
-
-
+    }
 
 };

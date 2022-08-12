@@ -59,6 +59,8 @@
 
                     ?>
                 </fieldset>
+                <?= $this->Flash->render() ?>
+
                 <?= $this->Form->button(__("S'inscrire"),[
                     'class'=>'signup-btn'
                     ]);  

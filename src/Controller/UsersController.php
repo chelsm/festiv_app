@@ -78,6 +78,10 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
+            if ($this->Users->findByPseudo($this->request->getData('pseudo'))->count() > 0) {
+                $this->Flash->error(__('Ce pseudo existe déjà'));
+                return $this->redirect(['controller'=> 'Users','action' => 'add']);
+            }
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('Votre compte a bien été créé.'));

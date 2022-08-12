@@ -48,7 +48,6 @@ $cakeDescription = "Festiv'App";
 
     <script>
         if ('serviceWorker' in navigator) {
-            console.log('je suis dans le service worker');
             navigator.serviceWorker.register('/sw.js');
         }
     </script>
@@ -67,19 +66,11 @@ $cakeDescription = "Festiv'App";
 >
 <?php if ($this->request->getAttribute('identity')) :?>
     <nav class="nav">
-        <!-- <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
-        </div> -->
             <div class="nav-links">
                     <?= $this->Html->link('<i class="fa-solid fa-house"></i>', ['controller'=>'Posts','action'=>'index'],['class' => 'superclass', 'escape' => false]) ?>
                     <?= $this->Html->link('<i class="fa-solid fa-magnifying-glass"></i>', ['controller'=>'Users','action'=>'search'],['class' => 'superclass', 'escape' => false]) ?>
-                    <!-- <?= $this->Html->link('<i class="fa-solid fa-message"></i>', ['controller'=>'Messages','action'=>'index'],['class' => 'superclass', 'escape' => false]) ?> -->
                     <?= $this->Html->link('<i class="fa-solid fa-plus"></i>', ['controller'=>'Posts','action'=>'add' ],['class' => 'addPost_icon', 'superclass', 'escape' => false]) ?>
                     <?= $this->Html->link('<i class="fa-solid fa-user"></i>', ['controller'=>'Users','action'=>'view',$this->request->getAttribute('identity')->id ],['class' => 'superclass', 'escape' => false]) ?>
-
-                    <!-- <?= $this->Html->link('Mon compte', ['controller'=>'Users','action'=>'view',$this->request->getAttribute('identity')->id ]) ?>
-                    <?= $this->Html->link('Ajout Posts', ['controller'=>'Posts','action'=>'add' ]) ?>
-                    <?= $this->Html->link('Se deconnecter', ['controller'=>'Users','action'=>'logout']) ?> -->
             </div>
     </nav>
 <?php endif; ?>

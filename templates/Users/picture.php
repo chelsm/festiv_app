@@ -11,7 +11,6 @@
         <h2 class="title-page">modifier ma photo de profil</h2>
         <div class="separator"></div>
 
-
             <?= $this->Form->create($a, ['enctype' => 'multipart/form-data']) ?>
                 
             <?= $this->Form->control('image', ['label' => false, 'type' => 'file']) ?>

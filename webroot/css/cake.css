@@ -182,9 +182,13 @@ figure img {
   border-radius: 14px;
   height: unset;
   width: fit-content;
+  margin: 5px 0;
 }
 .users-section .users form .users-edit .input {
   width: 100%;
+}
+.users-section .users form .users-edit .input .file {
+  margin: 5px 0;
 }
 .users-section .users form .users-edit .input label {
   font-family: "Futura LT Pro Bold";
@@ -442,7 +446,7 @@ label #text {
   padding: 15px;
 }
 .posts .posts-container .posts-list {
-  margin: 0 auto;
+  margin: 25px auto;
   display: flex;
   justify-content: center;
   width: 80%;
@@ -539,6 +543,24 @@ label #text {
 .posts .single-post-view {
   background: #FFFFFF;
   border-radius: 24px;
+}
+
+.fromAddPost label {
+  width: fit-content;
+  border: solid;
+  padding: 5px;
+  border-radius: 7px;
+  width: fit-content;
+  margin: 5px 0;
+}
+
+.inputImgPost {
+  display: none;
+}
+
+.img-prev {
+  width: auto;
+  background-size: cover;
 }
 
 .search-section {
